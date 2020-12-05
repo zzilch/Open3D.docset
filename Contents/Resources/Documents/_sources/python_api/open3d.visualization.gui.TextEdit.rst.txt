@@ -1,0 +1,9 @@
+open3d.visualization.gui.TextEdit
+---------------------------------
+
+.. currentmodule:: open3d.visualization.gui
+
+.. autoclass:: TextEdit
+    :members:
+    :undoc-members:
+    :inherited-members:

@@ -1,0 +1,9 @@
+open3d.pipelines.registration.L2Loss
+------------------------------------
+
+.. currentmodule:: open3d.pipelines.registration
+
+.. autoclass:: L2Loss
+    :members:
+    :undoc-members:
+    :inherited-members:

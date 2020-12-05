@@ -1,0 +1,548 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Customized visualization &mdash; Open3D 0.11.2 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/open3d_logo.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Interactive visualization" href="interactive_visualization.html" />
+    <link rel="prev" title="Visualization" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Open3D
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.11.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../compilation.html">Build from source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp_project.html">Build C++ projects with Open3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../builddocs.html">Build documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../open3d_ml.html">Open3D-ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../arm.html">ARM support</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../geometry/index.html">Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pipelines/index.html">Pipelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Visualization</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Customized visualization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mimic-draw-geometries-with-visualizer-class">Mimic draw_geometries() with Visualizer class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#change-field-of-view">Change field of view</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#callback-functions">Callback functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#capture-images-in-a-customized-animation">Capture images in a customized animation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interactive_visualization.html">Interactive visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="non_blocking_visualization.html">Non-blocking visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="headless_rendering.html">Headless rendering</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Tensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reconstruction_system/index.html">Reconstruction system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sensor/index.html">Sensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contribute</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute/contribute.html">Contributing to Open3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute/contribution_recipes.html">Contribution methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute/styleguide.html">Open3D style guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">C++ API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cpp_api.html">C++ documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python_api/open3d.camera.html">open3d.camera</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python_api/open3d.core.html">open3d.core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python_api/open3d.geometry.html">open3d.geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python_api/open3d.io.html">open3d.io</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python_api/open3d.t.html">open3d.t</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python_api/open3d.ml.html">open3d.ml</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python_api/open3d.pipelines.html">open3d.pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python_api/open3d.utility.html">open3d.utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python_api/open3d.visualization.html">open3d.visualization</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Open3D</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Visualization</a> &raquo;</li>
+        
+      <li>Customized visualization</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="customized-visualization">
+<span id="id1"></span><h1>Customized visualization<a class="headerlink" href="#customized-visualization" title="Permalink to this headline">¶</a></h1>
+<p>The usage of Open3D convenient visualization functions <code class="docutils literal notranslate"><span class="pre">draw_geometries</span></code> and <code class="docutils literal notranslate"><span class="pre">draw_geometries_with_custom_animation</span></code> is straightforward. Everything can be done with the GUI. Press <kbd class="kbd docutils literal notranslate">h</kbd> inside the visualizer window to see helper information. For more details, see <code class="xref any docutils literal notranslate"><span class="pre">/tutorial/visualization/visualization.ipynb</span></code>.</p>
+<p>This tutorial focuses on more advanced functionalities to customize the behavior of the visualizer window. Please refer to examples/python/visualization/customized_visualization.py to try the following examples.</p>
+<div class="section" id="mimic-draw-geometries-with-visualizer-class">
+<h2>Mimic draw_geometries() with Visualizer class<a class="headerlink" href="#mimic-draw-geometries-with-visualizer-class" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">custom_draw_geometry</span><span class="p">(</span><span class="n">pcd</span><span class="p">):</span>
+    <span class="c1"># The following code achieves the same effect as:</span>
+    <span class="c1"># o3d.visualization.draw_geometries([pcd])</span>
+    <span class="n">vis</span> <span class="o">=</span> <span class="n">o3d</span><span class="o">.</span><span class="n">visualization</span><span class="o">.</span><span class="n">Visualizer</span><span class="p">()</span>
+    <span class="n">vis</span><span class="o">.</span><span class="n">create_window</span><span class="p">()</span>
+    <span class="n">vis</span><span class="o">.</span><span class="n">add_geometry</span><span class="p">(</span><span class="n">pcd</span><span class="p">)</span>
+    <span class="n">vis</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    <span class="n">vis</span><span class="o">.</span><span class="n">destroy_window</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<p>This function produces exactly the same functionality as the convenience function <code class="docutils literal notranslate"><span class="pre">draw_geometries</span></code>.</p>
+<a class="reference internal image-reference" href="../../_images/custom.png"><img alt="../../_images/custom.png" src="../../_images/custom.png" style="width: 400px;" /></a>
+<p>Class <code class="docutils literal notranslate"><span class="pre">Visualizer</span></code> has a couple of variables such as a <code class="docutils literal notranslate"><span class="pre">ViewControl</span></code> and a <code class="docutils literal notranslate"><span class="pre">RenderOption</span></code>. The following function reads a predefined <code class="docutils literal notranslate"><span class="pre">RenderOption</span></code> stored in a json file.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>46
+47
+48
+49
+50
+51
+52</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">custom_draw_geometry_load_option</span><span class="p">(</span><span class="n">pcd</span><span class="p">):</span>
+    <span class="n">vis</span> <span class="o">=</span> <span class="n">o3d</span><span class="o">.</span><span class="n">visualization</span><span class="o">.</span><span class="n">Visualizer</span><span class="p">()</span>
+    <span class="n">vis</span><span class="o">.</span><span class="n">create_window</span><span class="p">()</span>
+    <span class="n">vis</span><span class="o">.</span><span class="n">add_geometry</span><span class="p">(</span><span class="n">pcd</span><span class="p">)</span>
+    <span class="n">vis</span><span class="o">.</span><span class="n">get_render_option</span><span class="p">()</span><span class="o">.</span><span class="n">load_from_json</span><span class="p">(</span><span class="s2">&quot;../../test_data/renderoption.json&quot;</span><span class="p">)</span>
+    <span class="n">vis</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    <span class="n">vis</span><span class="o">.</span><span class="n">destroy_window</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<p>Outputs:</p>
+<a class="reference internal image-reference" href="../../_images/normal.png"><img alt="../../_images/normal.png" src="../../_images/normal.png" style="width: 400px;" /></a>
+</div>
+<div class="section" id="change-field-of-view">
+<h2>Change field of view<a class="headerlink" href="#change-field-of-view" title="Permalink to this headline">¶</a></h2>
+<p>To change field of view of the camera, it is first necessary to get an instance of the visualizer control. To modify the field of view, use <code class="docutils literal notranslate"><span class="pre">change_field_of_view</span></code>.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>23
+24
+25
+26
+27
+28
+29
+30
+31
+32</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">custom_draw_geometry_with_custom_fov</span><span class="p">(</span><span class="n">pcd</span><span class="p">,</span> <span class="n">fov_step</span><span class="p">):</span>
+    <span class="n">vis</span> <span class="o">=</span> <span class="n">o3d</span><span class="o">.</span><span class="n">visualization</span><span class="o">.</span><span class="n">Visualizer</span><span class="p">()</span>
+    <span class="n">vis</span><span class="o">.</span><span class="n">create_window</span><span class="p">()</span>
+    <span class="n">vis</span><span class="o">.</span><span class="n">add_geometry</span><span class="p">(</span><span class="n">pcd</span><span class="p">)</span>
+    <span class="n">ctr</span> <span class="o">=</span> <span class="n">vis</span><span class="o">.</span><span class="n">get_view_control</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Field of view (before changing) </span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">ctr</span><span class="o">.</span><span class="n">get_field_of_view</span><span class="p">())</span>
+    <span class="n">ctr</span><span class="o">.</span><span class="n">change_field_of_view</span><span class="p">(</span><span class="n">step</span><span class="o">=</span><span class="n">fov_step</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Field of view (after changing) </span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">ctr</span><span class="o">.</span><span class="n">get_field_of_view</span><span class="p">())</span>
+    <span class="n">vis</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    <span class="n">vis</span><span class="o">.</span><span class="n">destroy_window</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<p>The field of view (FoV) can be set to a degree in the range [5,90]. Note that <code class="docutils literal notranslate"><span class="pre">change_field_of_view</span></code> adds the specified FoV to the current FoV. By default, the visualizer has an FoV of 60 degrees. Calling the following code</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">custom_draw_geometry_with_custom_fov</span><span class="p">(</span><span class="n">pcd</span><span class="p">,</span> <span class="mf">90.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>will add the specified 90 degrees to the default 60 degrees. As it exceeds the maximum allowable FoV, the FoV is set to 90 degrees.</p>
+<a class="reference internal image-reference" href="../../_images/fov_90.png"><img alt="../../_images/fov_90.png" src="../../_images/fov_90.png" style="width: 400px;" /></a>
+<p>The following code</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">custom_draw_geometry_with_custom_fov</span><span class="p">(</span><span class="n">pcd</span><span class="p">,</span> <span class="o">-</span><span class="mf">90.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>will set FoV to 5 degrees, because 60 - 90 = -30 is less than 5 degrees.</p>
+<a class="reference internal image-reference" href="../../_images/fov_5.png"><img alt="../../_images/fov_5.png" src="../../_images/fov_5.png" style="width: 400px;" /></a>
+</div>
+<div class="section" id="callback-functions">
+<h2>Callback functions<a class="headerlink" href="#callback-functions" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>35
+36
+37
+38
+39
+40
+41
+42
+43</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">custom_draw_geometry_with_rotation</span><span class="p">(</span><span class="n">pcd</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">rotate_view</span><span class="p">(</span><span class="n">vis</span><span class="p">):</span>
+        <span class="n">ctr</span> <span class="o">=</span> <span class="n">vis</span><span class="o">.</span><span class="n">get_view_control</span><span class="p">()</span>
+        <span class="n">ctr</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="n">o3d</span><span class="o">.</span><span class="n">visualization</span><span class="o">.</span><span class="n">draw_geometries_with_animation_callback</span><span class="p">([</span><span class="n">pcd</span><span class="p">],</span>
+                                                              <span class="n">rotate_view</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>Function <code class="docutils literal notranslate"><span class="pre">draw_geometries_with_animation_callback</span></code> registers a Python callback function <code class="docutils literal notranslate"><span class="pre">rotate_view</span></code> as the idle function of the main loop. It rotates the view along the x-axis whenever the visualizer is idle. This defines an animation behavior.</p>
+<a class="reference internal image-reference" href="../../_images/rotate_small.gif"><img alt="../../_images/rotate_small.gif" src="../../_images/rotate_small.gif" style="width: 400px;" /></a>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">custom_draw_geometry_with_key_callback</span><span class="p">(</span><span class="n">pcd</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">change_background_to_black</span><span class="p">(</span><span class="n">vis</span><span class="p">):</span>
+        <span class="n">opt</span> <span class="o">=</span> <span class="n">vis</span><span class="o">.</span><span class="n">get_render_option</span><span class="p">()</span>
+        <span class="n">opt</span><span class="o">.</span><span class="n">background_color</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">load_render_option</span><span class="p">(</span><span class="n">vis</span><span class="p">):</span>
+        <span class="n">vis</span><span class="o">.</span><span class="n">get_render_option</span><span class="p">()</span><span class="o">.</span><span class="n">load_from_json</span><span class="p">(</span>
+            <span class="s2">&quot;../../test_data/renderoption.json&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">capture_depth</span><span class="p">(</span><span class="n">vis</span><span class="p">):</span>
+        <span class="n">depth</span> <span class="o">=</span> <span class="n">vis</span><span class="o">.</span><span class="n">capture_depth_float_buffer</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">depth</span><span class="p">))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">capture_image</span><span class="p">(</span><span class="n">vis</span><span class="p">):</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">vis</span><span class="o">.</span><span class="n">capture_screen_float_buffer</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">image</span><span class="p">))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="n">key_to_callback</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">key_to_callback</span><span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;K&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">change_background_to_black</span>
+    <span class="n">key_to_callback</span><span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;R&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">load_render_option</span>
+    <span class="n">key_to_callback</span><span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">capture_depth</span>
+    <span class="n">key_to_callback</span><span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">capture_image</span>
+    <span class="n">o3d</span><span class="o">.</span><span class="n">visualization</span><span class="o">.</span><span class="n">draw_geometries_with_key_callbacks</span><span class="p">([</span><span class="n">pcd</span><span class="p">],</span> <span class="n">key_to_callback</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>Callback functions can also be registered upon key press event. This script registered four keys. For example, pressing <kbd class="kbd docutils literal notranslate">k</kbd> changes the background color to black.</p>
+<a class="reference internal image-reference" href="../../_images/key_k.png"><img alt="../../_images/key_k.png" src="../../_images/key_k.png" style="width: 400px;" /></a>
+</div>
+<div class="section" id="capture-images-in-a-customized-animation">
+<h2>Capture images in a customized animation<a class="headerlink" href="#capture-images-in-a-customized-animation" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">custom_draw_geometry_with_camera_trajectory</span><span class="p">(</span><span class="n">pcd</span><span class="p">):</span>
+    <span class="n">custom_draw_geometry_with_camera_trajectory</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">custom_draw_geometry_with_camera_trajectory</span><span class="o">.</span><span class="n">trajectory</span> <span class="o">=</span>\
+            <span class="n">o3d</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read_pinhole_camera_trajectory</span><span class="p">(</span>
+                    <span class="s2">&quot;../../test_data/camera_trajectory.json&quot;</span><span class="p">)</span>
+    <span class="n">custom_draw_geometry_with_camera_trajectory</span><span class="o">.</span><span class="n">vis</span> <span class="o">=</span> <span class="n">o3d</span><span class="o">.</span><span class="n">visualization</span><span class="o">.</span><span class="n">Visualizer</span><span class="p">(</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;../../test_data/image/&quot;</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&quot;../../test_data/image/&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;../../test_data/depth/&quot;</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&quot;../../test_data/depth/&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">move_forward</span><span class="p">(</span><span class="n">vis</span><span class="p">):</span>
+        <span class="c1"># This function is called within the o3d.visualization.Visualizer::run() loop</span>
+        <span class="c1"># The run loop calls the function, then re-render</span>
+        <span class="c1"># So the sequence in this function is to:</span>
+        <span class="c1"># 1. Capture frame</span>
+        <span class="c1"># 2. index++, check ending criteria</span>
+        <span class="c1"># 3. Set camera</span>
+        <span class="c1"># 4. (Re-render)</span>
+        <span class="n">ctr</span> <span class="o">=</span> <span class="n">vis</span><span class="o">.</span><span class="n">get_view_control</span><span class="p">()</span>
+        <span class="n">glb</span> <span class="o">=</span> <span class="n">custom_draw_geometry_with_camera_trajectory</span>
+        <span class="k">if</span> <span class="n">glb</span><span class="o">.</span><span class="n">index</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Capture image </span><span class="si">{:05d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">glb</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
+            <span class="n">depth</span> <span class="o">=</span> <span class="n">vis</span><span class="o">.</span><span class="n">capture_depth_float_buffer</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">image</span> <span class="o">=</span> <span class="n">vis</span><span class="o">.</span><span class="n">capture_screen_float_buffer</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span><span class="s2">&quot;../../test_data/depth/</span><span class="si">{:05d}</span><span class="s2">.png&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">glb</span><span class="o">.</span><span class="n">index</span><span class="p">),</span>\
+                    <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">depth</span><span class="p">),</span> <span class="n">dpi</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span><span class="s2">&quot;../../test_data/image/</span><span class="si">{:05d}</span><span class="s2">.png&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">glb</span><span class="o">.</span><span class="n">index</span><span class="p">),</span>\
+                    <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">image</span><span class="p">),</span> <span class="n">dpi</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="c1">#vis.capture_depth_image(&quot;depth/{:05d}.png&quot;.format(glb.index), False)</span>
+            <span class="c1">#vis.capture_screen_image(&quot;image/{:05d}.png&quot;.format(glb.index), False)</span>
+        <span class="n">glb</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">glb</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">glb</span><span class="o">.</span><span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">glb</span><span class="o">.</span><span class="n">trajectory</span><span class="o">.</span><span class="n">parameters</span><span class="p">):</span>
+            <span class="n">ctr</span><span class="o">.</span><span class="n">convert_from_pinhole_camera_parameters</span><span class="p">(</span>
+                <span class="n">glb</span><span class="o">.</span><span class="n">trajectory</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="n">glb</span><span class="o">.</span><span class="n">index</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">custom_draw_geometry_with_camera_trajectory</span><span class="o">.</span><span class="n">vis</span><span class="o">.</span>\
+                    <span class="n">register_animation_callback</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="n">vis</span> <span class="o">=</span> <span class="n">custom_draw_geometry_with_camera_trajectory</span><span class="o">.</span><span class="n">vis</span>
+    <span class="n">vis</span><span class="o">.</span><span class="n">create_window</span><span class="p">()</span>
+    <span class="n">vis</span><span class="o">.</span><span class="n">add_geometry</span><span class="p">(</span><span class="n">pcd</span><span class="p">)</span>
+    <span class="n">vis</span><span class="o">.</span><span class="n">get_render_option</span><span class="p">()</span><span class="o">.</span><span class="n">load_from_json</span><span class="p">(</span><span class="s2">&quot;../../test_data/renderoption.json&quot;</span><span class="p">)</span>
+    <span class="n">vis</span><span class="o">.</span><span class="n">register_animation_callback</span><span class="p">(</span><span class="n">move_forward</span><span class="p">)</span>
+    <span class="n">vis</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    <span class="n">vis</span><span class="o">.</span><span class="n">destroy_window</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<p>This function reads a camera trajectory, then defines an animation function <code class="docutils literal notranslate"><span class="pre">move_forward</span></code> to travel through the camera trajectory. In this animation function, both color image and depth image are captured using <code class="docutils literal notranslate"><span class="pre">Visualizer.capture_depth_float_buffer</span></code> and <code class="docutils literal notranslate"><span class="pre">Visualizer.capture_screen_float_buffer</span></code> respectively. The images are saved as png files.</p>
+<p>The captured image sequence:</p>
+<a class="reference internal image-reference" href="../../_images/image_small.gif"><img alt="../../_images/image_small.gif" src="../../_images/image_small.gif" style="width: 400px;" /></a>
+<p>The captured depth sequence:</p>
+<a class="reference internal image-reference" href="../../_images/depth_small.gif"><img alt="../../_images/depth_small.gif" src="../../_images/depth_small.gif" style="width: 400px;" /></a>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="interactive_visualization.html" class="btn btn-neutral float-right" title="Interactive visualization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Visualization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018 - 2020, www.open3d.org
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+<span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Docs version</span>
+    0.11.2
+    <span class="fa fa-caret-down"></span>
+</span>
+
+<!-- A hack to include an external page to get around CORS policy -->
+<!-- https://stackoverflow.com/a/15250208/1255535 -->
+<div class="rst-other-versions">
+    <dl>
+    <dt>Versions</dt>
+        <dd><ul>
+            <script src="http://www.open3d.org/docs/versions.js"></script>
+        </ul></dd>
+    </dl>
+</div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

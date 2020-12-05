@@ -1,0 +1,9 @@
+open3d.visualization.gui.SceneWidget
+------------------------------------
+
+.. currentmodule:: open3d.visualization.gui
+
+.. autoclass:: SceneWidget
+    :members:
+    :undoc-members:
+    :inherited-members:

@@ -1,0 +1,6 @@
+open3d.t.io.read_point_cloud
+----------------------------
+
+.. currentmodule:: open3d.t.io
+
+.. autofunction:: read_point_cloud

@@ -1,0 +1,9 @@
+open3d.pipelines.registration.HuberLoss
+---------------------------------------
+
+.. currentmodule:: open3d.pipelines.registration
+
+.. autoclass:: HuberLoss
+    :members:
+    :undoc-members:
+    :inherited-members:

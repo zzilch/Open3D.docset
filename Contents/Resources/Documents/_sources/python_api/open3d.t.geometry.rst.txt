@@ -1,0 +1,20 @@
+open3d.t.geometry
+-----------------
+
+.. currentmodule:: open3d.t.geometry
+
+**Classes**
+
+.. autosummary::
+
+    Geometry
+    PointCloud
+    TensorListMap
+
+
+.. toctree::
+    :hidden:
+
+    Geometry <open3d.t.geometry.Geometry>
+    PointCloud <open3d.t.geometry.PointCloud>
+    TensorListMap <open3d.t.geometry.TensorListMap>

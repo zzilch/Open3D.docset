@@ -1,0 +1,6 @@
+open3d.core.cast_to_py_tensor
+-----------------------------
+
+.. currentmodule:: open3d.core
+
+.. autofunction:: cast_to_py_tensor

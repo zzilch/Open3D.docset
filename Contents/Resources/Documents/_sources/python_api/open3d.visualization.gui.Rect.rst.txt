@@ -1,0 +1,9 @@
+open3d.visualization.gui.Rect
+-----------------------------
+
+.. currentmodule:: open3d.visualization.gui
+
+.. autoclass:: Rect
+    :members:
+    :undoc-members:
+    :inherited-members:

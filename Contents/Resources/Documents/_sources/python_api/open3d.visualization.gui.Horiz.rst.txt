@@ -1,0 +1,9 @@
+open3d.visualization.gui.Horiz
+------------------------------
+
+.. currentmodule:: open3d.visualization.gui
+
+.. autoclass:: Horiz
+    :members:
+    :undoc-members:
+    :inherited-members:

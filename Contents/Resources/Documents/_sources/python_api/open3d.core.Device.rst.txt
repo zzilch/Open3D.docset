@@ -1,0 +1,9 @@
+open3d.core.Device
+------------------
+
+.. currentmodule:: open3d.core
+
+.. autoclass:: Device
+    :members:
+    :undoc-members:
+    :inherited-members:

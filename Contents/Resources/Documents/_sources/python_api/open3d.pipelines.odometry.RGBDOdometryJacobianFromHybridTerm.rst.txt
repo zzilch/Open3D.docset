@@ -1,0 +1,9 @@
+open3d.pipelines.odometry.RGBDOdometryJacobianFromHybridTerm
+------------------------------------------------------------
+
+.. currentmodule:: open3d.pipelines.odometry
+
+.. autoclass:: RGBDOdometryJacobianFromHybridTerm
+    :members:
+    :undoc-members:
+    :inherited-members:

@@ -1,0 +1,9 @@
+open3d.pipelines.registration.TransformationEstimationPointToPlane
+------------------------------------------------------------------
+
+.. currentmodule:: open3d.pipelines.registration
+
+.. autoclass:: TransformationEstimationPointToPlane
+    :members:
+    :undoc-members:
+    :inherited-members:

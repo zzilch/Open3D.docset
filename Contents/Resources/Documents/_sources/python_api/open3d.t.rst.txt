@@ -1,0 +1,18 @@
+open3d.t
+--------
+
+.. currentmodule:: open3d.t
+
+**Modules**
+
+.. autosummary::
+
+    geometry
+    io
+
+
+.. toctree::
+    :hidden:
+
+    geometry <open3d.t.geometry>
+    io <open3d.t.io>

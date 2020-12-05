@@ -1,0 +1,9 @@
+open3d.visualization.gui.TreeView
+---------------------------------
+
+.. currentmodule:: open3d.visualization.gui
+
+.. autoclass:: TreeView
+    :members:
+    :undoc-members:
+    :inherited-members:

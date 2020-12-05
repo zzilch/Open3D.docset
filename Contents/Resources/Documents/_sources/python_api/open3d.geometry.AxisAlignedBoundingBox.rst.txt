@@ -1,0 +1,9 @@
+open3d.geometry.AxisAlignedBoundingBox
+--------------------------------------
+
+.. currentmodule:: open3d.geometry
+
+.. autoclass:: AxisAlignedBoundingBox
+    :members:
+    :undoc-members:
+    :inherited-members:

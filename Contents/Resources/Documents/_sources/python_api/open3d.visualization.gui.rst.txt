@@ -1,0 +1,86 @@
+open3d.visualization.gui
+------------------------
+
+.. currentmodule:: open3d.visualization.gui
+
+**Classes**
+
+.. autosummary::
+
+    Application
+    Button
+    CheckableTextTreeCell
+    Checkbox
+    CollapsableVert
+    Color
+    ColorEdit
+    ColormapTreeCell
+    Combobox
+    Dialog
+    FileDialog
+    Horiz
+    ImageLabel
+    LUTTreeCell
+    Label
+    Layout1D
+    ListView
+    Margins
+    Menu
+    NumberEdit
+    ProgressBar
+    Rect
+    SceneWidget
+    Size
+    Slider
+    StackedWidget
+    TabControl
+    TextEdit
+    Theme
+    TreeView
+    VGrid
+    VectorEdit
+    Vert
+    Widget
+    Window
+    WindowBase
+
+
+.. toctree::
+    :hidden:
+
+    Application <open3d.visualization.gui.Application>
+    Button <open3d.visualization.gui.Button>
+    CheckableTextTreeCell <open3d.visualization.gui.CheckableTextTreeCell>
+    Checkbox <open3d.visualization.gui.Checkbox>
+    CollapsableVert <open3d.visualization.gui.CollapsableVert>
+    Color <open3d.visualization.gui.Color>
+    ColorEdit <open3d.visualization.gui.ColorEdit>
+    ColormapTreeCell <open3d.visualization.gui.ColormapTreeCell>
+    Combobox <open3d.visualization.gui.Combobox>
+    Dialog <open3d.visualization.gui.Dialog>
+    FileDialog <open3d.visualization.gui.FileDialog>
+    Horiz <open3d.visualization.gui.Horiz>
+    ImageLabel <open3d.visualization.gui.ImageLabel>
+    LUTTreeCell <open3d.visualization.gui.LUTTreeCell>
+    Label <open3d.visualization.gui.Label>
+    Layout1D <open3d.visualization.gui.Layout1D>
+    ListView <open3d.visualization.gui.ListView>
+    Margins <open3d.visualization.gui.Margins>
+    Menu <open3d.visualization.gui.Menu>
+    NumberEdit <open3d.visualization.gui.NumberEdit>
+    ProgressBar <open3d.visualization.gui.ProgressBar>
+    Rect <open3d.visualization.gui.Rect>
+    SceneWidget <open3d.visualization.gui.SceneWidget>
+    Size <open3d.visualization.gui.Size>
+    Slider <open3d.visualization.gui.Slider>
+    StackedWidget <open3d.visualization.gui.StackedWidget>
+    TabControl <open3d.visualization.gui.TabControl>
+    TextEdit <open3d.visualization.gui.TextEdit>
+    Theme <open3d.visualization.gui.Theme>
+    TreeView <open3d.visualization.gui.TreeView>
+    VGrid <open3d.visualization.gui.VGrid>
+    VectorEdit <open3d.visualization.gui.VectorEdit>
+    Vert <open3d.visualization.gui.Vert>
+    Widget <open3d.visualization.gui.Widget>
+    Window <open3d.visualization.gui.Window>
+    WindowBase <open3d.visualization.gui.WindowBase>

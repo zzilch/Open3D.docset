@@ -1,0 +1,426 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Open3D style guide &mdash; Open3D 0.11.2 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/open3d_logo.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="C++ documentation" href="../cpp_api.html" />
+    <link rel="prev" title="Contribution methods" href="contribution_recipes.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Open3D
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.11.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compilation.html">Build from source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpp_project.html">Build C++ projects with Open3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../builddocs.html">Build documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../open3d_ml.html">Open3D-ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arm.html">ARM support</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/geometry/index.html">Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/pipelines/index.html">Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/visualization/index.html">Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/core/index.html">Tensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/reconstruction_system/index.html">Reconstruction system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/sensor/index.html">Sensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/reference.html">Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contribute</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contributing to Open3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribution_recipes.html">Contribution methods</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Open3D style guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#coding-style">Coding style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#style-checker">Style checker</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-clang-format">Install clang-format</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ubuntu">Ubuntu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#macos">macOS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#windows">Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#checking-clang-format-version">Checking clang-format version</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#install-yapf">Install YAPF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#checking-and-applying-format">Checking and applying format</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ubuntu-macos">Ubuntu &amp; macOS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Windows</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">C++ API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cpp_api.html">C++ documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python_api/open3d.camera.html">open3d.camera</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_api/open3d.core.html">open3d.core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_api/open3d.geometry.html">open3d.geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_api/open3d.io.html">open3d.io</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_api/open3d.t.html">open3d.t</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_api/open3d.ml.html">open3d.ml</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_api/open3d.pipelines.html">open3d.pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_api/open3d.utility.html">open3d.utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_api/open3d.visualization.html">open3d.visualization</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Open3D</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Open3D style guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="open3d-style-guide">
+<span id="style-guide"></span><h1>Open3D style guide<a class="headerlink" href="#open3d-style-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="coding-style">
+<h2>Coding style<a class="headerlink" href="#coding-style" title="Permalink to this headline">¶</a></h2>
+<p>Consistent coding style is an important factor of code readability. Some principles:</p>
+<ol class="arabic simple">
+<li><p>Code itself is a document. Name functions and variables in a way they are self explanatory.</p></li>
+<li><p>Be consistent with existing code and documents. Be consistent with C++ conventions.</p></li>
+<li><p>Use common sense.</p></li>
+</ol>
+<p>We generally follow the <a class="reference external" href="https://google.github.io/styleguide/cppguide.html">Google C++ Style Guide</a>, with a few modifications:</p>
+<ul class="simple">
+<li><p>Use 4 spaces for indent. Use two indents for a forced line break (usually due to the 80 character length limit).</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">once</span></code> for header guard.</p></li>
+<li><p>All Open3D classes and functions are nested in namespace <code class="docutils literal notranslate"><span class="pre">open3d</span></code>.</p></li>
+<li><p>Avoid using naked pointers. Use <code class="docutils literal notranslate"><span class="pre">std::shared_ptr</span></code> and <code class="docutils literal notranslate"><span class="pre">std::unique_ptr</span></code> instead.</p></li>
+<li><p>C++11 features are recommended, but C++14 and C++17 are also accepted.</p></li>
+</ul>
+<p>We also recommend reading the <a class="reference external" href="https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md">C++ Core Guidelines</a>.</p>
+<p>For Python, please use Google style guidelines, as shown <a class="reference external" href="http://google.github.io/styleguide/pyguide.html">here</a>.</p>
+</div>
+<div class="section" id="style-checker">
+<h2>Style checker<a class="headerlink" href="#style-checker" title="Permalink to this headline">¶</a></h2>
+<p>Open3D’s CI checks for code formatting based on the style specified in
+<code class="docutils literal notranslate"><span class="pre">.clang-format</span></code> for C++ files and <code class="docutils literal notranslate"><span class="pre">.style.yapf</span></code> for Python files.
+Please build the <code class="docutils literal notranslate"><span class="pre">check-style</span></code> and <code class="docutils literal notranslate"><span class="pre">apply-style</span></code>
+CMake target before submitting a pull request, or use your editor’s
+<code class="docutils literal notranslate"><span class="pre">clang-format</span></code> and <code class="docutils literal notranslate"><span class="pre">yapf</span></code> integration to format the source code automatically.</p>
+<p>Different <code class="docutils literal notranslate"><span class="pre">clang-format</span></code> versions may produce slightly different
+formatting results. For standardization, <code class="docutils literal notranslate"><span class="pre">clang-format</span></code> version
+<code class="docutils literal notranslate"><span class="pre">10</span></code> shall be used.</p>
+<div class="section" id="install-clang-format">
+<span id="installing-clang-format-50"></span><h3>Install clang-format<a class="headerlink" href="#install-clang-format" title="Permalink to this headline">¶</a></h3>
+<p>By default, the make system tries to detect either <code class="docutils literal notranslate"><span class="pre">clang-format-10</span></code>
+or <code class="docutils literal notranslate"><span class="pre">clang-format</span></code> from PATH.</p>
+<div class="section" id="ubuntu">
+<span id="id1"></span><h4>Ubuntu<a class="headerlink" href="#ubuntu" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ubuntu 18.04</span>
+sudo apt update
+sudo apt install clang-format-10
+clang-format-10 --version
+</pre></div>
+</div>
+</div>
+<div class="section" id="macos">
+<span id="id2"></span><h4>macOS<a class="headerlink" href="#macos" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install from official brew formula.</span>
+brew install clang-format
+clang-format --version
+
+<span class="c1"># (Optional) If you previously have a tagged version (e.g. clang-format@5)</span>
+<span class="c1"># of clang-format installed, unlink the tagged version and link the new version.</span>
+brew unlink clang-format@5
+brew link clang-format
+clang-format --version
+
+<span class="c1"># (Optional) In case brew updates to a newer clang-format version, we also</span>
+<span class="c1"># provide a tagged clang-format@10 backup formula.</span>
+curl https://raw.githubusercontent.com/intel-isl/Open3D/master/3rdparty/clang-format/clang-format%4010.rb -o <span class="k">$(</span>brew --repo<span class="k">)</span>/Library/Taps/homebrew/homebrew-core/Formula/clang-format@10.rb
+brew install clang-format@10
+clang-format --version
+</pre></div>
+</div>
+<p>Alternatively, you may also download the clang-10 macOS package from
+<a class="reference external" href="http://releases.llvm.org/download.html">LLVM Download Page</a>, unzip and add the directory containing <code class="docutils literal notranslate"><span class="pre">clang-format</span></code>
+to <code class="docutils literal notranslate"><span class="pre">PATH</span></code>.</p>
+</div>
+<div class="section" id="windows">
+<span id="id3"></span><h4>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h4>
+<p>Download LLVM version 10 Windows package from <a class="reference external" href="http://releases.llvm.org/download.html">LLVM Download Page</a>. During
+installation, select the option which allows adding clang toolchains to
+<code class="docutils literal notranslate"><span class="pre">PATH</span></code>. After installation, open a CMD terminal and try</p>
+<div class="highlight-batch notranslate"><div class="highlight"><pre><span></span>clang-format --version
+</pre></div>
+</div>
+</div>
+<div class="section" id="checking-clang-format-version">
+<span id="check-version"></span><h4>Checking clang-format version<a class="headerlink" href="#checking-clang-format-version" title="Permalink to this headline">¶</a></h4>
+<p>After installation, check <code class="docutils literal notranslate"><span class="pre">clang-format</span></code>’s version with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># In most cases</span>
+clang-format --version
+
+<span class="c1"># Or, when installed as clang-format-10, e.g. on Ubuntu</span>
+clang-format-10 --version
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="install-yapf">
+<span id="id4"></span><h3>Install YAPF<a class="headerlink" href="#install-yapf" title="Permalink to this headline">¶</a></h3>
+<p>We use <a class="reference external" href="https://github.com/google/yapf.git">YAPF</a> for Python formatting.
+Different YAPF versions may produce slightly different formatting results, thus
+we choose version <code class="docutils literal notranslate"><span class="pre">0.30.0</span></code> as the standard version to be used.</p>
+<p>Install YAPF with</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># For Pip</span>
+pip install <span class="nv">yapf</span><span class="o">==</span><span class="m">0</span>.30.0
+
+<span class="c1"># For conda</span>
+conda install <span class="nv">yapf</span><span class="o">=</span><span class="m">0</span>.30.0
+</pre></div>
+</div>
+<p>You can also download <a class="reference external" href="https://github.com/google/yapf.git">YAPF</a> and install
+it from source.</p>
+</div>
+<div class="section" id="checking-and-applying-format">
+<span id="id6"></span><h3>Checking and applying format<a class="headerlink" href="#checking-and-applying-format" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="ubuntu-macos">
+<span id="id7"></span><h4>Ubuntu &amp; macOS<a class="headerlink" href="#ubuntu-macos" title="Permalink to this headline">¶</a></h4>
+<p>After CMake config, to check style, run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># For c++/cuda/python/ipynb files</span>
+make check-style
+
+<span class="c1"># Or, only for c++/cuda files</span>
+make check-cpp-style
+</pre></div>
+</div>
+<p>After CMake config, to apply proper style, run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># For c++/cuda/python/ipynb files</span>
+make apply-style
+
+<span class="c1"># Or, only for c++/cuda files</span>
+make apply-cpp-style
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<span id="id9"></span><h4>Windows<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<p>After CMake config, to check style, run</p>
+<div class="highlight-batch notranslate"><div class="highlight"><pre><span></span># For c++/cuda/python/ipynb files
+cmake --build . --target check-style
+
+# Or, only for c++/cuda files
+cmake --build . --target check-cpp-style
+</pre></div>
+</div>
+<p>After CMake config, to apply the proper style, run</p>
+<div class="highlight-batch notranslate"><div class="highlight"><pre><span></span># For c++/cuda/python/ipynb files
+cmake --build . --target apply-style
+
+# Or, only for c++/cuda files
+cmake --build . --target apply-cpp-style
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../cpp_api.html" class="btn btn-neutral float-right" title="C++ documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="contribution_recipes.html" class="btn btn-neutral float-left" title="Contribution methods" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018 - 2020, www.open3d.org
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+<span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Docs version</span>
+    0.11.2
+    <span class="fa fa-caret-down"></span>
+</span>
+
+<!-- A hack to include an external page to get around CORS policy -->
+<!-- https://stackoverflow.com/a/15250208/1255535 -->
+<div class="rst-other-versions">
+    <dl>
+    <dt>Versions</dt>
+        <dd><ul>
+            <script src="http://www.open3d.org/docs/versions.js"></script>
+        </ul></dd>
+    </dl>
+</div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

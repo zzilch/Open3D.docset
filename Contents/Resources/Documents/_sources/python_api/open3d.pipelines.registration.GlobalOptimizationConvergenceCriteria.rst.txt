@@ -1,0 +1,9 @@
+open3d.pipelines.registration.GlobalOptimizationConvergenceCriteria
+-------------------------------------------------------------------
+
+.. currentmodule:: open3d.pipelines.registration
+
+.. autoclass:: GlobalOptimizationConvergenceCriteria
+    :members:
+    :undoc-members:
+    :inherited-members:

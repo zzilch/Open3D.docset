@@ -1,0 +1,9 @@
+open3d.pipelines.registration.CorrespondenceCheckerBasedOnDistance
+------------------------------------------------------------------
+
+.. currentmodule:: open3d.pipelines.registration
+
+.. autoclass:: CorrespondenceCheckerBasedOnDistance
+    :members:
+    :undoc-members:
+    :inherited-members:

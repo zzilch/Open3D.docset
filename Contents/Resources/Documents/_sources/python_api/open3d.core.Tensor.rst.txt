@@ -1,0 +1,9 @@
+open3d.core.Tensor
+------------------
+
+.. currentmodule:: open3d.core
+
+.. autoclass:: Tensor
+    :members:
+    :undoc-members:
+    :inherited-members:

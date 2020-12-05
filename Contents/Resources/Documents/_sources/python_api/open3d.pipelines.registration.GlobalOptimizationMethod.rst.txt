@@ -1,0 +1,9 @@
+open3d.pipelines.registration.GlobalOptimizationMethod
+------------------------------------------------------
+
+.. currentmodule:: open3d.pipelines.registration
+
+.. autoclass:: GlobalOptimizationMethod
+    :members:
+    :undoc-members:
+    :inherited-members:

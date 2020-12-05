@@ -1,0 +1,98 @@
+open3d.geometry
+---------------
+
+.. currentmodule:: open3d.geometry
+
+**Classes**
+
+.. autosummary::
+
+    AxisAlignedBoundingBox
+    DeformAsRigidAsPossibleEnergy
+    FilterScope
+    Geometry
+    Geometry2D
+    Geometry3D
+    HalfEdge
+    HalfEdgeTriangleMesh
+    Image
+    ImageFilterType
+    KDTreeFlann
+    KDTreeSearchParam
+    KDTreeSearchParamHybrid
+    KDTreeSearchParamKNN
+    KDTreeSearchParamRadius
+    LineSet
+    MeshBase
+    Octree
+    OctreeColorLeafNode
+    OctreeInternalNode
+    OctreeLeafNode
+    OctreeNode
+    OctreeNodeInfo
+    OrientedBoundingBox
+    PointCloud
+    RGBDImage
+    SimplificationContraction
+    TetraMesh
+    TriangleMesh
+    Voxel
+    VoxelGrid
+
+
+**Functions**
+
+.. autosummary::
+
+    get_rotation_matrix_from_axis_angle
+    get_rotation_matrix_from_quaternion
+    get_rotation_matrix_from_xyz
+    get_rotation_matrix_from_xzy
+    get_rotation_matrix_from_yxz
+    get_rotation_matrix_from_yzx
+    get_rotation_matrix_from_zxy
+    get_rotation_matrix_from_zyx
+
+
+.. toctree::
+    :hidden:
+
+    AxisAlignedBoundingBox <open3d.geometry.AxisAlignedBoundingBox>
+    DeformAsRigidAsPossibleEnergy <open3d.geometry.DeformAsRigidAsPossibleEnergy>
+    FilterScope <open3d.geometry.FilterScope>
+    Geometry <open3d.geometry.Geometry>
+    Geometry2D <open3d.geometry.Geometry2D>
+    Geometry3D <open3d.geometry.Geometry3D>
+    HalfEdge <open3d.geometry.HalfEdge>
+    HalfEdgeTriangleMesh <open3d.geometry.HalfEdgeTriangleMesh>
+    Image <open3d.geometry.Image>
+    ImageFilterType <open3d.geometry.ImageFilterType>
+    KDTreeFlann <open3d.geometry.KDTreeFlann>
+    KDTreeSearchParam <open3d.geometry.KDTreeSearchParam>
+    KDTreeSearchParamHybrid <open3d.geometry.KDTreeSearchParamHybrid>
+    KDTreeSearchParamKNN <open3d.geometry.KDTreeSearchParamKNN>
+    KDTreeSearchParamRadius <open3d.geometry.KDTreeSearchParamRadius>
+    LineSet <open3d.geometry.LineSet>
+    MeshBase <open3d.geometry.MeshBase>
+    Octree <open3d.geometry.Octree>
+    OctreeColorLeafNode <open3d.geometry.OctreeColorLeafNode>
+    OctreeInternalNode <open3d.geometry.OctreeInternalNode>
+    OctreeLeafNode <open3d.geometry.OctreeLeafNode>
+    OctreeNode <open3d.geometry.OctreeNode>
+    OctreeNodeInfo <open3d.geometry.OctreeNodeInfo>
+    OrientedBoundingBox <open3d.geometry.OrientedBoundingBox>
+    PointCloud <open3d.geometry.PointCloud>
+    RGBDImage <open3d.geometry.RGBDImage>
+    SimplificationContraction <open3d.geometry.SimplificationContraction>
+    TetraMesh <open3d.geometry.TetraMesh>
+    TriangleMesh <open3d.geometry.TriangleMesh>
+    Voxel <open3d.geometry.Voxel>
+    VoxelGrid <open3d.geometry.VoxelGrid>
+    get_rotation_matrix_from_axis_angle <open3d.geometry.get_rotation_matrix_from_axis_angle>
+    get_rotation_matrix_from_quaternion <open3d.geometry.get_rotation_matrix_from_quaternion>
+    get_rotation_matrix_from_xyz <open3d.geometry.get_rotation_matrix_from_xyz>
+    get_rotation_matrix_from_xzy <open3d.geometry.get_rotation_matrix_from_xzy>
+    get_rotation_matrix_from_yxz <open3d.geometry.get_rotation_matrix_from_yxz>
+    get_rotation_matrix_from_yzx <open3d.geometry.get_rotation_matrix_from_yzx>
+    get_rotation_matrix_from_zxy <open3d.geometry.get_rotation_matrix_from_zxy>
+    get_rotation_matrix_from_zyx <open3d.geometry.get_rotation_matrix_from_zyx>

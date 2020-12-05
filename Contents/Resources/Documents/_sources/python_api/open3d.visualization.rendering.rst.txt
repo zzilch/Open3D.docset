@@ -1,0 +1,28 @@
+open3d.visualization.rendering
+------------------------------
+
+.. currentmodule:: open3d.visualization.rendering
+
+**Classes**
+
+.. autosummary::
+
+    Camera
+    Gradient
+    Material
+    OffscreenRenderer
+    Open3DScene
+    Renderer
+    Scene
+
+
+.. toctree::
+    :hidden:
+
+    Camera <open3d.visualization.rendering.Camera>
+    Gradient <open3d.visualization.rendering.Gradient>
+    Material <open3d.visualization.rendering.Material>
+    OffscreenRenderer <open3d.visualization.rendering.OffscreenRenderer>
+    Open3DScene <open3d.visualization.rendering.Open3DScene>
+    Renderer <open3d.visualization.rendering.Renderer>
+    Scene <open3d.visualization.rendering.Scene>

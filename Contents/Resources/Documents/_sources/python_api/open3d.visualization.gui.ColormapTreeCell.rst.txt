@@ -1,0 +1,9 @@
+open3d.visualization.gui.ColormapTreeCell
+-----------------------------------------
+
+.. currentmodule:: open3d.visualization.gui
+
+.. autoclass:: ColormapTreeCell
+    :members:
+    :undoc-members:
+    :inherited-members:

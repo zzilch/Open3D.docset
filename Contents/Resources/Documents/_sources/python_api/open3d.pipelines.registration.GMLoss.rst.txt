@@ -1,0 +1,9 @@
+open3d.pipelines.registration.GMLoss
+------------------------------------
+
+.. currentmodule:: open3d.pipelines.registration
+
+.. autoclass:: GMLoss
+    :members:
+    :undoc-members:
+    :inherited-members:

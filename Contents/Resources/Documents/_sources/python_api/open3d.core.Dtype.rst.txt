@@ -1,0 +1,9 @@
+open3d.core.Dtype
+-----------------
+
+.. currentmodule:: open3d.core
+
+.. autoclass:: Dtype
+    :members:
+    :undoc-members:
+    :inherited-members:

@@ -1,0 +1,9 @@
+open3d.visualization.gui.Button
+-------------------------------
+
+.. currentmodule:: open3d.visualization.gui
+
+.. autoclass:: Button
+    :members:
+    :undoc-members:
+    :inherited-members:

@@ -1,0 +1,375 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ARM support &mdash; Open3D 0.11.2 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/open3d_logo.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Geometry" href="tutorial/geometry/index.html" />
+    <link rel="prev" title="Open3D-ML" href="open3d_ml.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Open3D
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.11.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compilation.html">Build from source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cpp_project.html">Build C++ projects with Open3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="builddocs.html">Build documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open3d_ml.html">Open3D-ML</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ARM support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#system-requirements">System requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#building-open3d-on-arm64">Building Open3D on ARM64</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-dependencies">Install dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build">Build</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#nvidia-jetson">Nvidia Jetson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#raspberry-pi-4">Raspberry Pi 4</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/geometry/index.html">Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/pipelines/index.html">Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/visualization/index.html">Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/core/index.html">Tensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/reconstruction_system/index.html">Reconstruction system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/sensor/index.html">Sensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/reference.html">Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contribute</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contribute/contribute.html">Contributing to Open3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute/contribution_recipes.html">Contribution methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute/styleguide.html">Open3D style guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">C++ API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cpp_api.html">C++ documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="python_api/open3d.camera.html">open3d.camera</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_api/open3d.core.html">open3d.core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_api/open3d.geometry.html">open3d.geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_api/open3d.io.html">open3d.io</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_api/open3d.t.html">open3d.t</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_api/open3d.ml.html">open3d.ml</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_api/open3d.pipelines.html">open3d.pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_api/open3d.utility.html">open3d.utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_api/open3d.visualization.html">open3d.visualization</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Open3D</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>ARM support</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="arm-support">
+<span id="arm"></span><h1>ARM support<a class="headerlink" href="#arm-support" title="Permalink to this headline">¶</a></h1>
+<p>Open3D provides experimental support for 64-bit ARM architecture (<code class="docutils literal notranslate"><span class="pre">arm64</span></code>
+or <code class="docutils literal notranslate"><span class="pre">aarch64</span></code>) on Linux. Open3D needs to be compiled from source to run on ARM.</p>
+<div class="section" id="system-requirements">
+<h2>System requirements<a class="headerlink" href="#system-requirements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>64-bit ARM processor and 64-bit Linux operating system. Check the output of
+<code class="docutils literal notranslate"><span class="pre">uname</span> <span class="pre">-p</span></code> and it should show <code class="docutils literal notranslate"><span class="pre">aarch64</span></code>.</p></li>
+<li><p>Full OpenGL (not OpenGL ES) is needed for Open3D GUI. If OpenGL is not
+available, the Open3D GUI will compile but it won’t run. In this case, we
+recommend setting <code class="docutils literal notranslate"><span class="pre">-DBUILD_GUI=OFF</span></code> during the <code class="docutils literal notranslate"><span class="pre">cmake</span></code> configuration step.</p></li>
+</ul>
+</div>
+<div class="section" id="building-open3d-on-arm64">
+<h2>Building Open3D on ARM64<a class="headerlink" href="#building-open3d-on-arm64" title="Permalink to this headline">¶</a></h2>
+<p>Note: If you encounter build issues, check the <code class="docutils literal notranslate"><span class="pre">arm64</span></code> section of
+<code class="docutils literal notranslate"><span class="pre">.github/workflows/openblas.yml</span></code> for the full CI build scripts on ARM64.</p>
+<div class="section" id="install-dependencies">
+<h3>Install dependencies<a class="headerlink" href="#install-dependencies" title="Permalink to this headline">¶</a></h3>
+<p>Install the following system dependencies:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get update -y
+sudo apt-get install -y apt-utils build-essential git cmake
+sudo apt-get install -y python3 python3-dev python3-pip
+sudo apt-get install -y xorg-dev libglu1-mesa-dev
+sudo apt-get install -y libblas-dev liblapack-dev liblapacke-dev
+sudo apt-get install -y libsdl2-dev libc++-7-dev libc++abi-7-dev libxi-dev
+sudo apt-get install -y clang-7
+</pre></div>
+</div>
+<p>Optionally, <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code> and <code class="docutils literal notranslate"><span class="pre">ccache</span></code> are recommended. Note that conda does
+not support ARM.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install -y python3-virtualenv ccache
+</pre></div>
+</div>
+<p>If the Open3D build system complains about <code class="docutils literal notranslate"><span class="pre">CMake</span> <span class="pre">xxx</span> <span class="pre">or</span> <span class="pre">higher</span> <span class="pre">is</span> <span class="pre">required</span></code>,
+refer to one of the following options:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cmake.org/install/">Compile CMake from source</a></p></li>
+<li><p>Install with <code class="docutils literal notranslate"><span class="pre">snap</span></code>: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">snap</span> <span class="pre">install</span> <span class="pre">cmake</span> <span class="pre">--classic</span></code></p></li>
+<li><p>Install with <code class="docutils literal notranslate"><span class="pre">pip</span></code> (run inside a Python virtual environment): <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">cmake</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="build">
+<h3>Build<a class="headerlink" href="#build" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Optional: create and activate virtual environment</span>
+virtualenv --python<span class="o">=</span><span class="k">$(</span>which python3<span class="k">)</span> <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/venv
+<span class="nb">source</span> <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/venv/bin/activate
+
+<span class="c1"># Clone</span>
+git clone --recursive https://github.com/intel-isl/Open3D
+<span class="nb">cd</span> Open3D
+git submodule update --init --recursive
+mkdir build
+<span class="nb">cd</span> build
+
+<span class="c1"># Configure</span>
+<span class="c1"># &gt; Set -DBUILD_CUDA_MODULE=ON if CUDA is available (e.g. on Nvidia Jetson)</span>
+<span class="c1"># &gt; Set -DBUILD_GUI=ON if OpenGL is available (e.g. on Nvidia Jetson)</span>
+<span class="c1"># &gt; We don&#39;t support TensorFlow and PyTorch on ARM officially</span>
+cmake <span class="se">\</span>
+    -DCMAKE_BUILD_TYPE<span class="o">=</span>Release <span class="se">\</span>
+    -DBUILD_SHARED_LIBS<span class="o">=</span>ON <span class="se">\</span>
+    -DBUILD_CUDA_MODULE<span class="o">=</span>OFF <span class="se">\</span>
+    -DBUILD_GUI<span class="o">=</span>OFF <span class="se">\</span>
+    -DBUILD_TENSORFLOW_OPS<span class="o">=</span>OFF <span class="se">\</span>
+    -DBUILD_PYTORCH_OPS<span class="o">=</span>OFF <span class="se">\</span>
+    -DBUILD_UNIT_TESTS<span class="o">=</span>ON <span class="se">\</span>
+    -DCMAKE_INSTALL_PREFIX<span class="o">=</span>~/open3d_install <span class="se">\</span>
+    -DPYTHON_EXECUTABLE<span class="o">=</span><span class="k">$(</span>which python<span class="k">)</span> <span class="se">\</span>
+    ..
+
+<span class="c1"># Build C++ library</span>
+make -j<span class="k">$(</span>nproc<span class="k">)</span>
+
+<span class="c1"># Run tests (optional)</span>
+make tests -j<span class="k">$(</span>nproc<span class="k">)</span>
+./bin/tests --gtest_filter<span class="o">=</span><span class="s2">&quot;-*Reduce*Sum*&quot;</span>
+
+<span class="c1"># Install C++ package (optional)</span>
+make install
+
+<span class="c1"># Install Open3D python package (optional)</span>
+make install-pip-package -j<span class="k">$(</span>nproc<span class="k">)</span>
+python -c <span class="s2">&quot;import open3d; print(open3d)&quot;</span>
+
+<span class="c1"># Run Open3D GUI (optional, available on when -DBUILD_GUI=ON)</span>
+./bin/Open3D/Open3D
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="nvidia-jetson">
+<h2>Nvidia Jetson<a class="headerlink" href="#nvidia-jetson" title="Permalink to this headline">¶</a></h2>
+<p>Nvidia Jetson computers with 64-bit processor and OS are supported. You can
+compile Open3D with <code class="docutils literal notranslate"><span class="pre">-DBUILD_CUDA_MODULE=ON</span></code> and <code class="docutils literal notranslate"><span class="pre">-DBUILD_GUI=ON</span></code> and
+the Open3D GUI app should be functional. We support CUDA v10.x, but other
+versions should work as well.</p>
+</div>
+<div class="section" id="raspberry-pi-4">
+<h2>Raspberry Pi 4<a class="headerlink" href="#raspberry-pi-4" title="Permalink to this headline">¶</a></h2>
+<p>Raspberry Pi 4 has 64-bit processor and supports OpenGL ES (not OpenGL).
+To build Open3D on Raspberry Pi 4, compile with <code class="docutils literal notranslate"><span class="pre">-DBUILD_GUI=OFF</span></code>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tutorial/geometry/index.html" class="btn btn-neutral float-right" title="Geometry" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="open3d_ml.html" class="btn btn-neutral float-left" title="Open3D-ML" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018 - 2020, www.open3d.org
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+<span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Docs version</span>
+    0.11.2
+    <span class="fa fa-caret-down"></span>
+</span>
+
+<!-- A hack to include an external page to get around CORS policy -->
+<!-- https://stackoverflow.com/a/15250208/1255535 -->
+<div class="rst-other-versions">
+    <dl>
+    <dt>Versions</dt>
+        <dd><ul>
+            <script src="http://www.open3d.org/docs/versions.js"></script>
+        </ul></dd>
+    </dl>
+</div>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

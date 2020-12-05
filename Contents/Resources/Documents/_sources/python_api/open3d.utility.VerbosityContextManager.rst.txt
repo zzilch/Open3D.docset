@@ -1,0 +1,9 @@
+open3d.utility.VerbosityContextManager
+--------------------------------------
+
+.. currentmodule:: open3d.utility
+
+.. autoclass:: VerbosityContextManager
+    :members:
+    :undoc-members:
+    :inherited-members:

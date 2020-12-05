@@ -1,0 +1,62 @@
+open3d.core
+-----------
+
+.. currentmodule:: open3d.core
+
+**Classes**
+
+.. autosummary::
+
+    Device
+    Dtype
+    DtypeCode
+    Hashmap
+    NoneType
+    SizeVector
+    Tensor
+    TensorList
+
+
+**Functions**
+
+.. autosummary::
+
+    _numpy_dtype_to_dtype
+    _to_o3d_tensor_key
+    cast_to_py_tensor
+    inv
+    lstsq
+    matmul
+    pybind_inv
+    pybind_lstsq
+    pybind_matmul
+    pybind_solve
+    pybind_svd
+    solve
+    svd
+
+
+.. toctree::
+    :hidden:
+
+    Device <open3d.core.Device>
+    Dtype <open3d.core.Dtype>
+    DtypeCode <open3d.core.DtypeCode>
+    Hashmap <open3d.core.Hashmap>
+    NoneType <open3d.core.NoneType>
+    SizeVector <open3d.core.SizeVector>
+    Tensor <open3d.core.Tensor>
+    TensorList <open3d.core.TensorList>
+    _numpy_dtype_to_dtype <open3d.core._numpy_dtype_to_dtype>
+    _to_o3d_tensor_key <open3d.core._to_o3d_tensor_key>
+    cast_to_py_tensor <open3d.core.cast_to_py_tensor>
+    inv <open3d.core.inv>
+    lstsq <open3d.core.lstsq>
+    matmul <open3d.core.matmul>
+    pybind_inv <open3d.core.pybind_inv>
+    pybind_lstsq <open3d.core.pybind_lstsq>
+    pybind_matmul <open3d.core.pybind_matmul>
+    pybind_solve <open3d.core.pybind_solve>
+    pybind_svd <open3d.core.pybind_svd>
+    solve <open3d.core.solve>
+    svd <open3d.core.svd>

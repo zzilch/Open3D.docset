@@ -1,0 +1,9 @@
+open3d.geometry.OrientedBoundingBox
+-----------------------------------
+
+.. currentmodule:: open3d.geometry
+
+.. autoclass:: OrientedBoundingBox
+    :members:
+    :undoc-members:
+    :inherited-members:

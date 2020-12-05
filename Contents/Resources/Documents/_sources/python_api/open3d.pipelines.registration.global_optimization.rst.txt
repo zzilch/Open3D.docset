@@ -1,0 +1,6 @@
+open3d.pipelines.registration.global_optimization
+-------------------------------------------------
+
+.. currentmodule:: open3d.pipelines.registration
+
+.. autofunction:: global_optimization

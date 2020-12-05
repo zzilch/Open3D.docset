@@ -1,0 +1,9 @@
+open3d.visualization.gui.Margins
+--------------------------------
+
+.. currentmodule:: open3d.visualization.gui
+
+.. autoclass:: Margins
+    :members:
+    :undoc-members:
+    :inherited-members:

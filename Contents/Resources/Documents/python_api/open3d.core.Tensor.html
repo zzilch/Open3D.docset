@@ -1,0 +1,802 @@
+
+<!DOCTYPE html>
+
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>open3d.core.Tensor — Open3D 0.11.2 documentation</title>
+<link href="../_static/open3d_logo.ico" rel="shortcut icon"/>
+<script src="../_static/js/modernizr.min.js" type="text/javascript"></script>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js" type="text/javascript"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/language_data.js"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="../_static/js/theme.js" type="text/javascript"></script>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/theme_overrides.css" rel="stylesheet" type="text/css"/>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="open3d.core.TensorList.html" rel="next" title="open3d.core.TensorList"/>
+<link href="open3d.core.SizeVector.html" rel="prev" title="open3d.core.SizeVector"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../index.html"> Open3D
+          
+
+          
+          </a>
+<div class="version">
+                0.11.2
+              </div>
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<div aria-label="main navigation" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compilation.html">Build from source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpp_project.html">Build C++ projects with Open3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../builddocs.html">Build documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../open3d_ml.html">Open3D-ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arm.html">ARM support</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/geometry/index.html">Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/pipelines/index.html">Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/visualization/index.html">Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/core/index.html">Tensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/reconstruction_system/index.html">Reconstruction system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/sensor/index.html">Sensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/reference.html">Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contribute</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/contribute.html">Contributing to Open3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/contribution_recipes.html">Contribution methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/styleguide.html">Open3D style guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">C++ API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cpp_api.html">C++ documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="open3d.camera.html">open3d.camera</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="open3d.core.html">open3d.core</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.Device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.Dtype.html">Dtype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.DtypeCode.html">DtypeCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.Hashmap.html">Hashmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.NoneType.html">NoneType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.SizeVector.html">SizeVector</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.TensorList.html">TensorList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core._numpy_dtype_to_dtype.html">_numpy_dtype_to_dtype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core._to_o3d_tensor_key.html">_to_o3d_tensor_key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.cast_to_py_tensor.html">cast_to_py_tensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.inv.html">inv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.lstsq.html">lstsq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.matmul.html">matmul</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.pybind_inv.html">pybind_inv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.pybind_lstsq.html">pybind_lstsq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.pybind_matmul.html">pybind_matmul</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.pybind_solve.html">pybind_solve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.pybind_svd.html">pybind_svd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.solve.html">solve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.svd.html">svd</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="open3d.geometry.html">open3d.geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open3d.io.html">open3d.io</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open3d.t.html">open3d.t</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open3d.ml.html">open3d.ml</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open3d.pipelines.html">open3d.pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open3d.utility.html">open3d.utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open3d.visualization.html">open3d.visualization</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="top navigation" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../index.html">Open3D</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a href="../index.html">Docs</a> »</li>
+<li><a href="open3d.core.html">open3d.core</a> »</li>
+<li>open3d.core.Tensor</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<div class="section" id="open3d-core-tensor">
+<h1>open3d.core.Tensor<a class="headerlink" href="#open3d-core-tensor" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="open3d.core.Tensor"><a name="//apple_ref/cpp/Class/open3d.core.Tensor"></a>
+<em class="property">class </em><code class="sig-prename descclassname">open3d.core.</code><code class="sig-name descname">Tensor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">dtype</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">device</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open3D Tensor class. A Tensor is a view of data blob with shape, strides
+and etc. Tensor can be used to perform numerical operations.</p>
+<dl class="py method">
+<dt id="open3d.core.Tensor.T"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.T"></a>
+<code class="sig-name descname">T</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.T" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.__init__"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.__init__"></a>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">array</span></em>, <em class="sig-param"><span class="n">arg1</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Dtype</span></em>, <em class="sig-param"><span class="n">arg2</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Device</span></em><span class="sig-paren">)</span> → None<a class="headerlink" href="#open3d.core.Tensor.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.abs"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.abs"></a>
+<code class="sig-name descname">abs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.abs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.abs_"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.abs_"></a>
+<code class="sig-name descname">abs_</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.abs_" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.add"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.add"></a>
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>add(self: open3d.cpu.pybind.core.Tensor, arg0: open3d.cpu.pybind.core.Tensor) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>add(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>add(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>add(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>add(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>add(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>add(self: open3d.cpu.pybind.core.Tensor, arg0: bool) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+</ol>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.add_"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.add_"></a>
+<code class="sig-name descname">add_</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.add_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>add_(self: open3d.cpu.pybind.core.Tensor, arg0: open3d.cpu.pybind.core.Tensor) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>add_(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>add_(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>add_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>add_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>add_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>add_(self: open3d.cpu.pybind.core.Tensor, arg0: bool) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+</ol>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.all"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.all"></a>
+<code class="sig-name descname">all</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → bool<a class="headerlink" href="#open3d.core.Tensor.all" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.allclose"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.allclose"></a>
+<code class="sig-name descname">allclose</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em>, <em class="sig-param"><span class="n">other</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em>, <em class="sig-param"><span class="n">rtol</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">1e-05</span></em>, <em class="sig-param"><span class="n">atol</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">1e-08</span></em><span class="sig-paren">)</span> → bool<a class="headerlink" href="#open3d.core.Tensor.allclose" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.any"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.any"></a>
+<code class="sig-name descname">any</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → bool<a class="headerlink" href="#open3d.core.Tensor.any" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.argmax"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.argmax"></a>
+<code class="sig-name descname">argmax</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.argmax" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.argmax_"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.argmax_"></a>
+<code class="sig-name descname">argmax_</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.SizeVector</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.argmax_" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.argmin"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.argmin"></a>
+<code class="sig-name descname">argmin</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.argmin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.argmin_"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.argmin_"></a>
+<code class="sig-name descname">argmin_</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.SizeVector</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.argmin_" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.contiguous"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.contiguous"></a>
+<code class="sig-name descname">contiguous</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.contiguous" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.cos"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.cos"></a>
+<code class="sig-name descname">cos</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.cos" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.cos_"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.cos_"></a>
+<code class="sig-name descname">cos_</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.cos_" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.cpu"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.cpu"></a>
+<code class="sig-name descname">cpu</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.cpu" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.cuda"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.cuda"></a>
+<code class="sig-name descname">cuda</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.cuda" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.diag"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.diag"></a>
+<em class="property">static </em><code class="sig-name descname">diag</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.diag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.div"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.div"></a>
+<code class="sig-name descname">div</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.div" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>div(self: open3d.cpu.pybind.core.Tensor, arg0: open3d.cpu.pybind.core.Tensor) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>div(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>div(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>div(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>div(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>div(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>div(self: open3d.cpu.pybind.core.Tensor, arg0: bool) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+</ol>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.div_"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.div_"></a>
+<code class="sig-name descname">div_</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.div_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>div_(self: open3d.cpu.pybind.core.Tensor, arg0: open3d.cpu.pybind.core.Tensor) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>div_(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>div_(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>div_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>div_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>div_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>div_(self: open3d.cpu.pybind.core.Tensor, arg0: bool) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+</ol>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.empty"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.empty"></a>
+<em class="property">static </em><code class="sig-name descname">empty</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.SizeVector</span></em>, <em class="sig-param"><span class="n">arg1</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Dtype</span></em>, <em class="sig-param"><span class="n">arg2</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Device</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.empty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.eq"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.eq"></a>
+<code class="sig-name descname">eq</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.eq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>eq(self: open3d.cpu.pybind.core.Tensor, arg0: open3d.cpu.pybind.core.Tensor) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>eq(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>eq(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>eq(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>eq(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>eq(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>eq(self: open3d.cpu.pybind.core.Tensor, arg0: bool) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+</ol>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.eq_"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.eq_"></a>
+<code class="sig-name descname">eq_</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.eq_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>eq_(self: open3d.cpu.pybind.core.Tensor, arg0: open3d.cpu.pybind.core.Tensor) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>eq_(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>eq_(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>eq_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>eq_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>eq_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>eq_(self: open3d.cpu.pybind.core.Tensor, arg0: bool) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+</ol>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.exp"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.exp"></a>
+<code class="sig-name descname">exp</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.exp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.exp_"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.exp_"></a>
+<code class="sig-name descname">exp_</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.exp_" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.eye"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.eye"></a>
+<em class="property">static </em><code class="sig-name descname">eye</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">arg1</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Dtype</span></em>, <em class="sig-param"><span class="n">arg2</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Device</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.eye" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.from_dlpack"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.from_dlpack"></a>
+<em class="property">static </em><code class="sig-name descname">from_dlpack</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">capsule</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.from_dlpack" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.from_numpy"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.from_numpy"></a>
+<em class="property">static </em><code class="sig-name descname">from_numpy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">array</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.from_numpy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.full"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.full"></a>
+<em class="property">static </em><code class="sig-name descname">full</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.full" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>full(arg0: open3d.cpu.pybind.core.SizeVector, arg1: float, arg2: open3d.cpu.pybind.core.Dtype, arg3: open3d.cpu.pybind.core.Device) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>full(arg0: open3d.cpu.pybind.core.SizeVector, arg1: float, arg2: open3d.cpu.pybind.core.Dtype, arg3: open3d.cpu.pybind.core.Device) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>full(arg0: open3d.cpu.pybind.core.SizeVector, arg1: int, arg2: open3d.cpu.pybind.core.Dtype, arg3: open3d.cpu.pybind.core.Device) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>full(arg0: open3d.cpu.pybind.core.SizeVector, arg1: int, arg2: open3d.cpu.pybind.core.Dtype, arg3: open3d.cpu.pybind.core.Device) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>full(arg0: open3d.cpu.pybind.core.SizeVector, arg1: int, arg2: open3d.cpu.pybind.core.Dtype, arg3: open3d.cpu.pybind.core.Device) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>full(arg0: open3d.cpu.pybind.core.SizeVector, arg1: bool, arg2: open3d.cpu.pybind.core.Dtype, arg3: open3d.cpu.pybind.core.Device) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+</ol>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.ge"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.ge"></a>
+<code class="sig-name descname">ge</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.ge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>ge(self: open3d.cpu.pybind.core.Tensor, arg0: open3d.cpu.pybind.core.Tensor) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>ge(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>ge(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>ge(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>ge(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>ge(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>ge(self: open3d.cpu.pybind.core.Tensor, arg0: bool) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+</ol>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.ge_"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.ge_"></a>
+<code class="sig-name descname">ge_</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.ge_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>ge_(self: open3d.cpu.pybind.core.Tensor, arg0: open3d.cpu.pybind.core.Tensor) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>ge_(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>ge_(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>ge_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>ge_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>ge_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>ge_(self: open3d.cpu.pybind.core.Tensor, arg0: bool) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+</ol>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.gt"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.gt"></a>
+<code class="sig-name descname">gt</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.gt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>gt(self: open3d.cpu.pybind.core.Tensor, arg0: open3d.cpu.pybind.core.Tensor) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>gt(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>gt(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>gt(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>gt(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>gt(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>gt(self: open3d.cpu.pybind.core.Tensor, arg0: bool) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+</ol>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.gt_"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.gt_"></a>
+<code class="sig-name descname">gt_</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.gt_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>gt_(self: open3d.cpu.pybind.core.Tensor, arg0: open3d.cpu.pybind.core.Tensor) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>gt_(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>gt_(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>gt_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>gt_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>gt_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>gt_(self: open3d.cpu.pybind.core.Tensor, arg0: bool) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+</ol>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.inv"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.inv"></a>
+<code class="sig-name descname">inv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.inv" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.isclose"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.isclose"></a>
+<code class="sig-name descname">isclose</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em>, <em class="sig-param"><span class="n">other</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em>, <em class="sig-param"><span class="n">rtol</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">1e-05</span></em>, <em class="sig-param"><span class="n">atol</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">1e-08</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.isclose" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.issame"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.issame"></a>
+<code class="sig-name descname">issame</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → bool<a class="headerlink" href="#open3d.core.Tensor.issame" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.item"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.item"></a>
+<code class="sig-name descname">item</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.item" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.le"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.le"></a>
+<code class="sig-name descname">le</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.le" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>le(self: open3d.cpu.pybind.core.Tensor, arg0: open3d.cpu.pybind.core.Tensor) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>le(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>le(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>le(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>le(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>le(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>le(self: open3d.cpu.pybind.core.Tensor, arg0: bool) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+</ol>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.le_"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.le_"></a>
+<code class="sig-name descname">le_</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.le_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>le_(self: open3d.cpu.pybind.core.Tensor, arg0: open3d.cpu.pybind.core.Tensor) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>le_(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>le_(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>le_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>le_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>le_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>le_(self: open3d.cpu.pybind.core.Tensor, arg0: bool) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+</ol>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.logical_and"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.logical_and"></a>
+<code class="sig-name descname">logical_and</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.logical_and" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>logical_and(self: open3d.cpu.pybind.core.Tensor, arg0: open3d.cpu.pybind.core.Tensor) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_and(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_and(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_and(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_and(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_and(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_and(self: open3d.cpu.pybind.core.Tensor, arg0: bool) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+</ol>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.logical_and_"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.logical_and_"></a>
+<code class="sig-name descname">logical_and_</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.logical_and_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>logical_and_(self: open3d.cpu.pybind.core.Tensor, arg0: open3d.cpu.pybind.core.Tensor) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_and_(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_and_(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_and_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_and_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_and_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_and_(self: open3d.cpu.pybind.core.Tensor, arg0: bool) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+</ol>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.logical_not"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.logical_not"></a>
+<code class="sig-name descname">logical_not</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.logical_not" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.logical_not_"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.logical_not_"></a>
+<code class="sig-name descname">logical_not_</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.logical_not_" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.logical_or"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.logical_or"></a>
+<code class="sig-name descname">logical_or</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.logical_or" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>logical_or(self: open3d.cpu.pybind.core.Tensor, arg0: open3d.cpu.pybind.core.Tensor) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_or(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_or(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_or(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_or(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_or(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_or(self: open3d.cpu.pybind.core.Tensor, arg0: bool) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+</ol>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.logical_or_"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.logical_or_"></a>
+<code class="sig-name descname">logical_or_</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.logical_or_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>logical_or_(self: open3d.cpu.pybind.core.Tensor, arg0: open3d.cpu.pybind.core.Tensor) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_or_(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_or_(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_or_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_or_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_or_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_or_(self: open3d.cpu.pybind.core.Tensor, arg0: bool) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+</ol>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.logical_xor"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.logical_xor"></a>
+<code class="sig-name descname">logical_xor</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.logical_xor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>logical_xor(self: open3d.cpu.pybind.core.Tensor, arg0: open3d.cpu.pybind.core.Tensor) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_xor(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_xor(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_xor(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_xor(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_xor(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_xor(self: open3d.cpu.pybind.core.Tensor, arg0: bool) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+</ol>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.logical_xor_"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.logical_xor_"></a>
+<code class="sig-name descname">logical_xor_</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.logical_xor_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>logical_xor_(self: open3d.cpu.pybind.core.Tensor, arg0: open3d.cpu.pybind.core.Tensor) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_xor_(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_xor_(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_xor_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_xor_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_xor_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>logical_xor_(self: open3d.cpu.pybind.core.Tensor, arg0: bool) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+</ol>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.lstsq"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.lstsq"></a>
+<code class="sig-name descname">lstsq</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.lstsq" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.lt"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.lt"></a>
+<code class="sig-name descname">lt</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.lt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>lt(self: open3d.cpu.pybind.core.Tensor, arg0: open3d.cpu.pybind.core.Tensor) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>lt(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>lt(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>lt(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>lt(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>lt(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>lt(self: open3d.cpu.pybind.core.Tensor, arg0: bool) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+</ol>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.lt_"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.lt_"></a>
+<code class="sig-name descname">lt_</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.lt_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>lt_(self: open3d.cpu.pybind.core.Tensor, arg0: open3d.cpu.pybind.core.Tensor) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>lt_(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>lt_(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>lt_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>lt_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>lt_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>lt_(self: open3d.cpu.pybind.core.Tensor, arg0: bool) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+</ol>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.matmul"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.matmul"></a>
+<code class="sig-name descname">matmul</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.matmul" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.max"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.max"></a>
+<code class="sig-name descname">max</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.SizeVector</span></em>, <em class="sig-param"><span class="n">arg1</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.max" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.mean"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.mean"></a>
+<code class="sig-name descname">mean</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.SizeVector</span></em>, <em class="sig-param"><span class="n">arg1</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.mean" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.min"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.min"></a>
+<code class="sig-name descname">min</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.SizeVector</span></em>, <em class="sig-param"><span class="n">arg1</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.min" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.mul"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.mul"></a>
+<code class="sig-name descname">mul</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.mul" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>mul(self: open3d.cpu.pybind.core.Tensor, arg0: open3d.cpu.pybind.core.Tensor) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>mul(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>mul(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>mul(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>mul(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>mul(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>mul(self: open3d.cpu.pybind.core.Tensor, arg0: bool) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+</ol>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.mul_"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.mul_"></a>
+<code class="sig-name descname">mul_</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.mul_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>mul_(self: open3d.cpu.pybind.core.Tensor, arg0: open3d.cpu.pybind.core.Tensor) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>mul_(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>mul_(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>mul_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>mul_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>mul_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>mul_(self: open3d.cpu.pybind.core.Tensor, arg0: bool) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+</ol>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.ne"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.ne"></a>
+<code class="sig-name descname">ne</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.ne" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>ne(self: open3d.cpu.pybind.core.Tensor, arg0: open3d.cpu.pybind.core.Tensor) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>ne(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>ne(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>ne(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>ne(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>ne(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>ne(self: open3d.cpu.pybind.core.Tensor, arg0: bool) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+</ol>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.ne_"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.ne_"></a>
+<code class="sig-name descname">ne_</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.ne_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>ne_(self: open3d.cpu.pybind.core.Tensor, arg0: open3d.cpu.pybind.core.Tensor) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>ne_(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>ne_(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>ne_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>ne_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>ne_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>ne_(self: open3d.cpu.pybind.core.Tensor, arg0: bool) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+</ol>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.neg"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.neg"></a>
+<code class="sig-name descname">neg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.neg" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.neg_"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.neg_"></a>
+<code class="sig-name descname">neg_</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.neg_" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.nonzero"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.nonzero"></a>
+<code class="sig-name descname">nonzero</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.nonzero" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.num_elements"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.num_elements"></a>
+<code class="sig-name descname">num_elements</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → int<a class="headerlink" href="#open3d.core.Tensor.num_elements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.numpy"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.numpy"></a>
+<code class="sig-name descname">numpy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.numpy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns this tensor as a NumPy array. This tensor must be a CPU tensor,
+and the returned NumPy array shares the same memory as this tensor.
+Changes to the NumPy array will be reflected in the original tensor and
+vice versa.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.ones"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.ones"></a>
+<em class="property">static </em><code class="sig-name descname">ones</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.SizeVector</span></em>, <em class="sig-param"><span class="n">arg1</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Dtype</span></em>, <em class="sig-param"><span class="n">arg2</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Device</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.ones" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.prod"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.prod"></a>
+<code class="sig-name descname">prod</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.SizeVector</span></em>, <em class="sig-param"><span class="n">arg1</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.prod" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.shallow_copy_from"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.shallow_copy_from"></a>
+<code class="sig-name descname">shallow_copy_from</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → None<a class="headerlink" href="#open3d.core.Tensor.shallow_copy_from" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.sin"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.sin"></a>
+<code class="sig-name descname">sin</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.sin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.sin_"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.sin_"></a>
+<code class="sig-name descname">sin_</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.sin_" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.solve"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.solve"></a>
+<code class="sig-name descname">solve</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.solve" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.sqrt"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.sqrt"></a>
+<code class="sig-name descname">sqrt</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.sqrt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.sqrt_"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.sqrt_"></a>
+<code class="sig-name descname">sqrt_</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.sqrt_" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.sub"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.sub"></a>
+<code class="sig-name descname">sub</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>sub(self: open3d.cpu.pybind.core.Tensor, arg0: open3d.cpu.pybind.core.Tensor) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>sub(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>sub(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>sub(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>sub(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>sub(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>sub(self: open3d.cpu.pybind.core.Tensor, arg0: bool) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+</ol>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.sub_"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.sub_"></a>
+<code class="sig-name descname">sub_</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.sub_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>sub_(self: open3d.cpu.pybind.core.Tensor, arg0: open3d.cpu.pybind.core.Tensor) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>sub_(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>sub_(self: open3d.cpu.pybind.core.Tensor, arg0: float) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>sub_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>sub_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>sub_(self: open3d.cpu.pybind.core.Tensor, arg0: int) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+<li><p>sub_(self: open3d.cpu.pybind.core.Tensor, arg0: bool) -&gt; open3d.cpu.pybind.core.Tensor</p></li>
+</ol>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.sum"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.sum"></a>
+<code class="sig-name descname">sum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.SizeVector</span></em>, <em class="sig-param"><span class="n">arg1</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.sum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.svd"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.svd"></a>
+<code class="sig-name descname">svd</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → Tuple<span class="p">[</span>open3d.cpu.pybind.core.Tensor<span class="p">, </span>open3d.cpu.pybind.core.Tensor<span class="p">, </span>open3d.cpu.pybind.core.Tensor<span class="p">]</span><a class="headerlink" href="#open3d.core.Tensor.svd" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.to"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.to"></a>
+<code class="sig-name descname">to</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Dtype</span></em>, <em class="sig-param"><span class="n">arg1</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.to" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.to_dlpack"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.to_dlpack"></a>
+<code class="sig-name descname">to_dlpack</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Tensor.to_dlpack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a DLPack PyCapsule representing this tensor.</p>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.zeros"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.zeros"></a>
+<em class="property">static </em><code class="sig-name descname">zeros</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.SizeVector</span></em>, <em class="sig-param"><span class="n">arg1</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Dtype</span></em>, <em class="sig-param"><span class="n">arg2</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Device</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Tensor.zeros" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.blob"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.blob"></a>
+<em class="property">property </em><code class="sig-name descname">blob</code><a class="headerlink" href="#open3d.core.Tensor.blob" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.device"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.device"></a>
+<em class="property">property </em><code class="sig-name descname">device</code><a class="headerlink" href="#open3d.core.Tensor.device" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.dtype"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.dtype"></a>
+<em class="property">property </em><code class="sig-name descname">dtype</code><a class="headerlink" href="#open3d.core.Tensor.dtype" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.ndim"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.ndim"></a>
+<em class="property">property </em><code class="sig-name descname">ndim</code><a class="headerlink" href="#open3d.core.Tensor.ndim" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.shape"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.shape"></a>
+<em class="property">property </em><code class="sig-name descname">shape</code><a class="headerlink" href="#open3d.core.Tensor.shape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Tensor.strides"><a name="//apple_ref/cpp/Method/open3d.core.Tensor.strides"></a>
+<em class="property">property </em><code class="sig-name descname">strides</code><a class="headerlink" href="#open3d.core.Tensor.strides" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+<footer>
+<div aria-label="footer navigation" class="rst-footer-buttons" role="navigation">
+<a accesskey="n" class="btn btn-neutral float-right" href="open3d.core.TensorList.html" rel="next" title="open3d.core.TensorList">Next <span class="fa fa-arrow-circle-right"></span></a>
+<a accesskey="p" class="btn btn-neutral float-left" href="open3d.core.SizeVector.html" rel="prev" title="open3d.core.SizeVector"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>
+        © Copyright 2018 - 2020, www.open3d.org
+
+    </p>
+</div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="versions" class="rst-versions" data-toggle="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span class="fa fa-book"> Docs version</span>
+    0.11.2
+    <span class="fa fa-caret-down"></span>
+</span>
+<!-- A hack to include an external page to get around CORS policy -->
+<!-- https://stackoverflow.com/a/15250208/1255535 -->
+<div class="rst-other-versions">
+<dl>
+<dt>Versions</dt>
+<dd><ul>
+<script src="http://www.open3d.org/docs/versions.js"></script>
+</ul></dd>
+</dl>
+</div>
+<script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</div></body>
+</html>

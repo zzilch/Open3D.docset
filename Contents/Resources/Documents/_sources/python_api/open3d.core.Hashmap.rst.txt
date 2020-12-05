@@ -1,0 +1,9 @@
+open3d.core.Hashmap
+-------------------
+
+.. currentmodule:: open3d.core
+
+.. autoclass:: Hashmap
+    :members:
+    :undoc-members:
+    :inherited-members:

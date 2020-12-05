@@ -1,0 +1,9 @@
+open3d.geometry.MeshBase
+------------------------
+
+.. currentmodule:: open3d.geometry
+
+.. autoclass:: MeshBase
+    :members:
+    :undoc-members:
+    :inherited-members:

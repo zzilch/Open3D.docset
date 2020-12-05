@@ -1,0 +1,18 @@
+open3d.t.io
+-----------
+
+.. currentmodule:: open3d.t.io
+
+**Functions**
+
+.. autosummary::
+
+    read_point_cloud
+    write_point_cloud
+
+
+.. toctree::
+    :hidden:
+
+    read_point_cloud <open3d.t.io.read_point_cloud>
+    write_point_cloud <open3d.t.io.write_point_cloud>

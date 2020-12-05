@@ -1,0 +1,9 @@
+open3d.visualization.rendering.Camera
+-------------------------------------
+
+.. currentmodule:: open3d.visualization.rendering
+
+.. autoclass:: Camera
+    :members:
+    :undoc-members:
+    :inherited-members:

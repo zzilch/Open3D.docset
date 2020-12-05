@@ -1,0 +1,9 @@
+open3d.visualization.gui.TabControl
+-----------------------------------
+
+.. currentmodule:: open3d.visualization.gui
+
+.. autoclass:: TabControl
+    :members:
+    :undoc-members:
+    :inherited-members:

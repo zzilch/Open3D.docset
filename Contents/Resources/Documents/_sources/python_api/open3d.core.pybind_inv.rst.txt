@@ -1,0 +1,6 @@
+open3d.core.pybind_inv
+----------------------
+
+.. currentmodule:: open3d.core
+
+.. autofunction:: pybind_inv

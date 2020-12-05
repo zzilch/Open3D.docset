@@ -1,0 +1,9 @@
+open3d.pipelines.registration.PoseGraphEdge
+-------------------------------------------
+
+.. currentmodule:: open3d.pipelines.registration
+
+.. autoclass:: PoseGraphEdge
+    :members:
+    :undoc-members:
+    :inherited-members:

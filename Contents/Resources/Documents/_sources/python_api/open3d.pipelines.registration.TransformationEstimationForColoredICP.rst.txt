@@ -1,0 +1,9 @@
+open3d.pipelines.registration.TransformationEstimationForColoredICP
+-------------------------------------------------------------------
+
+.. currentmodule:: open3d.pipelines.registration
+
+.. autoclass:: TransformationEstimationForColoredICP
+    :members:
+    :undoc-members:
+    :inherited-members:

@@ -1,0 +1,9 @@
+open3d.pipelines.registration.TransformationEstimation
+------------------------------------------------------
+
+.. currentmodule:: open3d.pipelines.registration
+
+.. autoclass:: TransformationEstimation
+    :members:
+    :undoc-members:
+    :inherited-members:

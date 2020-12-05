@@ -1,0 +1,9 @@
+open3d.visualization.rendering.Renderer
+---------------------------------------
+
+.. currentmodule:: open3d.visualization.rendering
+
+.. autoclass:: Renderer
+    :members:
+    :undoc-members:
+    :inherited-members:

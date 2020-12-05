@@ -1,0 +1,9 @@
+open3d.geometry.DeformAsRigidAsPossibleEnergy
+---------------------------------------------
+
+.. currentmodule:: open3d.geometry
+
+.. autoclass:: DeformAsRigidAsPossibleEnergy
+    :members:
+    :undoc-members:
+    :inherited-members:

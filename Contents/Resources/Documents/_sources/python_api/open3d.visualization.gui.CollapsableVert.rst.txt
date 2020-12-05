@@ -1,0 +1,9 @@
+open3d.visualization.gui.CollapsableVert
+----------------------------------------
+
+.. currentmodule:: open3d.visualization.gui
+
+.. autoclass:: CollapsableVert
+    :members:
+    :undoc-members:
+    :inherited-members:

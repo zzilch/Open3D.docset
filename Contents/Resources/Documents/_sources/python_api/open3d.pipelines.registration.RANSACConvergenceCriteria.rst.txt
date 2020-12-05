@@ -1,0 +1,9 @@
+open3d.pipelines.registration.RANSACConvergenceCriteria
+-------------------------------------------------------
+
+.. currentmodule:: open3d.pipelines.registration
+
+.. autoclass:: RANSACConvergenceCriteria
+    :members:
+    :undoc-members:
+    :inherited-members:

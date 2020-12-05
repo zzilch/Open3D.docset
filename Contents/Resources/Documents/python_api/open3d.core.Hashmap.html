@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>open3d.core.Hashmap — Open3D 0.11.2 documentation</title>
+<link href="../_static/open3d_logo.ico" rel="shortcut icon"/>
+<script src="../_static/js/modernizr.min.js" type="text/javascript"></script>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js" type="text/javascript"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/language_data.js"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="../_static/js/theme.js" type="text/javascript"></script>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/theme_overrides.css" rel="stylesheet" type="text/css"/>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="open3d.core.NoneType.html" rel="next" title="open3d.core.NoneType"/>
+<link href="open3d.core.DtypeCode.html" rel="prev" title="open3d.core.DtypeCode"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../index.html"> Open3D
+          
+
+          
+          </a>
+<div class="version">
+                0.11.2
+              </div>
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<div aria-label="main navigation" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compilation.html">Build from source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpp_project.html">Build C++ projects with Open3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../builddocs.html">Build documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../open3d_ml.html">Open3D-ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arm.html">ARM support</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/geometry/index.html">Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/pipelines/index.html">Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/visualization/index.html">Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/core/index.html">Tensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/reconstruction_system/index.html">Reconstruction system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/sensor/index.html">Sensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/reference.html">Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contribute</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/contribute.html">Contributing to Open3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/contribution_recipes.html">Contribution methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/styleguide.html">Open3D style guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">C++ API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cpp_api.html">C++ documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="open3d.camera.html">open3d.camera</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="open3d.core.html">open3d.core</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.Device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.Dtype.html">Dtype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.DtypeCode.html">DtypeCode</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Hashmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.NoneType.html">NoneType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.SizeVector.html">SizeVector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.Tensor.html">Tensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.TensorList.html">TensorList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core._numpy_dtype_to_dtype.html">_numpy_dtype_to_dtype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core._to_o3d_tensor_key.html">_to_o3d_tensor_key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.cast_to_py_tensor.html">cast_to_py_tensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.inv.html">inv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.lstsq.html">lstsq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.matmul.html">matmul</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.pybind_inv.html">pybind_inv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.pybind_lstsq.html">pybind_lstsq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.pybind_matmul.html">pybind_matmul</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.pybind_solve.html">pybind_solve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.pybind_svd.html">pybind_svd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.solve.html">solve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.core.svd.html">svd</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="open3d.geometry.html">open3d.geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open3d.io.html">open3d.io</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open3d.t.html">open3d.t</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open3d.ml.html">open3d.ml</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open3d.pipelines.html">open3d.pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open3d.utility.html">open3d.utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open3d.visualization.html">open3d.visualization</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="top navigation" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../index.html">Open3D</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a href="../index.html">Docs</a> »</li>
+<li><a href="open3d.core.html">open3d.core</a> »</li>
+<li>open3d.core.Hashmap</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<div class="section" id="open3d-core-hashmap">
+<h1>open3d.core.Hashmap<a class="headerlink" href="#open3d-core-hashmap" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="open3d.core.Hashmap"><a name="//apple_ref/cpp/Class/open3d.core.Hashmap"></a>
+<em class="property">class </em><code class="sig-prename descclassname">open3d.core.</code><code class="sig-name descname">Hashmap</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">init_capacity</span></em>, <em class="sig-param"><span class="n">dtype_key</span></em>, <em class="sig-param"><span class="n">dtype_value</span></em>, <em class="sig-param"><span class="n">device</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.core.Hashmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open3D Hashmap class. A Hashmap is a map from key to data wrapped by Tensors.</p>
+<dl class="py method">
+<dt id="open3d.core.Hashmap.__init__"><a name="//apple_ref/cpp/Method/open3d.core.Hashmap.__init__"></a>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Hashmap</span></em>, <em class="sig-param"><span class="n">init_capacity</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">dtype_key</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Dtype</span></em>, <em class="sig-param"><span class="n">dtype_val</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Dtype</span></em>, <em class="sig-param"><span class="n">device</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Device</span></em><span class="sig-paren">)</span> → None<a class="headerlink" href="#open3d.core.Hashmap.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Hashmap.activate"><a name="//apple_ref/cpp/Method/open3d.core.Hashmap.activate"></a>
+<code class="sig-name descname">activate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Hashmap</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → tuple<a class="headerlink" href="#open3d.core.Hashmap.activate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Hashmap.assign_iterators"><a name="//apple_ref/cpp/Method/open3d.core.Hashmap.assign_iterators"></a>
+<code class="sig-name descname">assign_iterators</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Hashmap</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em>, <em class="sig-param"><span class="n">arg1</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em>, <em class="sig-param"><span class="n">arg2</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Hashmap.assign_iterators" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Hashmap.erase"><a name="//apple_ref/cpp/Method/open3d.core.Hashmap.erase"></a>
+<code class="sig-name descname">erase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Hashmap</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → open3d.cpu.pybind.core.Tensor<a class="headerlink" href="#open3d.core.Hashmap.erase" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Hashmap.find"><a name="//apple_ref/cpp/Method/open3d.core.Hashmap.find"></a>
+<code class="sig-name descname">find</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Hashmap</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → tuple<a class="headerlink" href="#open3d.core.Hashmap.find" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Hashmap.insert"><a name="//apple_ref/cpp/Method/open3d.core.Hashmap.insert"></a>
+<code class="sig-name descname">insert</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Hashmap</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em>, <em class="sig-param"><span class="n">arg1</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → tuple<a class="headerlink" href="#open3d.core.Hashmap.insert" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Hashmap.rehash"><a name="//apple_ref/cpp/Method/open3d.core.Hashmap.rehash"></a>
+<code class="sig-name descname">rehash</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Hashmap</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> → None<a class="headerlink" href="#open3d.core.Hashmap.rehash" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Hashmap.size"><a name="//apple_ref/cpp/Method/open3d.core.Hashmap.size"></a>
+<code class="sig-name descname">size</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Hashmap</span></em><span class="sig-paren">)</span> → int<a class="headerlink" href="#open3d.core.Hashmap.size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.core.Hashmap.unpack_iterators"><a name="//apple_ref/cpp/Method/open3d.core.Hashmap.unpack_iterators"></a>
+<code class="sig-name descname">unpack_iterators</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Hashmap</span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em>, <em class="sig-param"><span class="n">arg1</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.core.Tensor</span></em><span class="sig-paren">)</span> → tuple<a class="headerlink" href="#open3d.core.Hashmap.unpack_iterators" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+<footer>
+<div aria-label="footer navigation" class="rst-footer-buttons" role="navigation">
+<a accesskey="n" class="btn btn-neutral float-right" href="open3d.core.NoneType.html" rel="next" title="open3d.core.NoneType">Next <span class="fa fa-arrow-circle-right"></span></a>
+<a accesskey="p" class="btn btn-neutral float-left" href="open3d.core.DtypeCode.html" rel="prev" title="open3d.core.DtypeCode"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>
+        © Copyright 2018 - 2020, www.open3d.org
+
+    </p>
+</div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="versions" class="rst-versions" data-toggle="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span class="fa fa-book"> Docs version</span>
+    0.11.2
+    <span class="fa fa-caret-down"></span>
+</span>
+<!-- A hack to include an external page to get around CORS policy -->
+<!-- https://stackoverflow.com/a/15250208/1255535 -->
+<div class="rst-other-versions">
+<dl>
+<dt>Versions</dt>
+<dd><ul>
+<script src="http://www.open3d.org/docs/versions.js"></script>
+</ul></dd>
+</dl>
+</div>
+<script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</div></body>
+</html>

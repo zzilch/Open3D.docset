@@ -1,0 +1,9 @@
+open3d.visualization.gui.Dialog
+-------------------------------
+
+.. currentmodule:: open3d.visualization.gui
+
+.. autoclass:: Dialog
+    :members:
+    :undoc-members:
+    :inherited-members:

@@ -1,0 +1,9 @@
+open3d.t.geometry.Geometry
+--------------------------
+
+.. currentmodule:: open3d.t.geometry
+
+.. autoclass:: Geometry
+    :members:
+    :undoc-members:
+    :inherited-members:

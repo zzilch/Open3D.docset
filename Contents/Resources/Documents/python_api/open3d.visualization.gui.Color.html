@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>open3d.visualization.gui.Color — Open3D 0.11.2 documentation</title>
+<link href="../_static/open3d_logo.ico" rel="shortcut icon"/>
+<script src="../_static/js/modernizr.min.js" type="text/javascript"></script>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js" type="text/javascript"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/language_data.js"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="../_static/js/theme.js" type="text/javascript"></script>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/theme_overrides.css" rel="stylesheet" type="text/css"/>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="open3d.visualization.gui.ColorEdit.html" rel="next" title="open3d.visualization.gui.ColorEdit"/>
+<link href="open3d.visualization.gui.CollapsableVert.html" rel="prev" title="open3d.visualization.gui.CollapsableVert"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../index.html"> Open3D
+          
+
+          
+          </a>
+<div class="version">
+                0.11.2
+              </div>
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<div aria-label="main navigation" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compilation.html">Build from source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpp_project.html">Build C++ projects with Open3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../builddocs.html">Build documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../open3d_ml.html">Open3D-ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arm.html">ARM support</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/geometry/index.html">Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/pipelines/index.html">Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/visualization/index.html">Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/core/index.html">Tensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/reconstruction_system/index.html">Reconstruction system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/sensor/index.html">Sensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/reference.html">Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contribute</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/contribute.html">Contributing to Open3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/contribution_recipes.html">Contribution methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/styleguide.html">Open3D style guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">C++ API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cpp_api.html">C++ documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="open3d.camera.html">open3d.camera</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open3d.core.html">open3d.core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open3d.geometry.html">open3d.geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open3d.io.html">open3d.io</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open3d.t.html">open3d.t</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open3d.ml.html">open3d.ml</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open3d.pipelines.html">open3d.pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open3d.utility.html">open3d.utility</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="open3d.visualization.html">open3d.visualization</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="open3d.visualization.MeshColorOption.html">MeshColorOption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.visualization.MeshShadeOption.html">MeshShadeOption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.visualization.PickedPoint.html">PickedPoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.visualization.PointColorOption.html">PointColorOption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.visualization.RenderOption.html">RenderOption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.visualization.SelectionPolygonVolume.html">SelectionPolygonVolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.visualization.ViewControl.html">ViewControl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.visualization.Visualizer.html">Visualizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.visualization.VisualizerWithEditing.html">VisualizerWithEditing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.visualization.VisualizerWithKeyCallback.html">VisualizerWithKeyCallback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.visualization.VisualizerWithVertexSelection.html">VisualizerWithVertexSelection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.visualization.draw_geometries.html">draw_geometries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.visualization.draw_geometries_with_animation_callback.html">draw_geometries_with_animation_callback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.visualization.draw_geometries_with_custom_animation.html">draw_geometries_with_custom_animation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.visualization.draw_geometries_with_editing.html">draw_geometries_with_editing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.visualization.draw_geometries_with_key_callbacks.html">draw_geometries_with_key_callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.visualization.draw_geometries_with_vertex_selection.html">draw_geometries_with_vertex_selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.visualization.read_selection_polygon_volume.html">read_selection_polygon_volume</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="open3d.visualization.gui.html">gui</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.Application.html">Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.Button.html">Button</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.CheckableTextTreeCell.html">CheckableTextTreeCell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.Checkbox.html">Checkbox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.CollapsableVert.html">CollapsableVert</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Color</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.ColorEdit.html">ColorEdit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.ColormapTreeCell.html">ColormapTreeCell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.Combobox.html">Combobox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.Dialog.html">Dialog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.FileDialog.html">FileDialog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.Horiz.html">Horiz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.ImageLabel.html">ImageLabel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.LUTTreeCell.html">LUTTreeCell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.Label.html">Label</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.Layout1D.html">Layout1D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.ListView.html">ListView</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.Margins.html">Margins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.Menu.html">Menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.NumberEdit.html">NumberEdit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.ProgressBar.html">ProgressBar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.Rect.html">Rect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.SceneWidget.html">SceneWidget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.Size.html">Size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.Slider.html">Slider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.StackedWidget.html">StackedWidget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.TabControl.html">TabControl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.TextEdit.html">TextEdit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.Theme.html">Theme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.TreeView.html">TreeView</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.VGrid.html">VGrid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.VectorEdit.html">VectorEdit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.Vert.html">Vert</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.Widget.html">Widget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.Window.html">Window</a></li>
+<li class="toctree-l3"><a class="reference internal" href="open3d.visualization.gui.WindowBase.html">WindowBase</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.visualization.rendering.html">rendering</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="top navigation" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../index.html">Open3D</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a href="../index.html">Docs</a> »</li>
+<li><a href="open3d.visualization.html">open3d.visualization</a> »</li>
+<li><a href="open3d.visualization.gui.html">open3d.visualization.gui</a> »</li>
+<li>open3d.visualization.gui.Color</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<div class="section" id="open3d-visualization-gui-color">
+<h1>open3d.visualization.gui.Color<a class="headerlink" href="#open3d-visualization-gui-color" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="open3d.visualization.gui.Color"><a name="//apple_ref/cpp/Class/open3d.visualization.gui.Color"></a>
+<em class="property">class </em><code class="sig-prename descclassname">open3d.visualization.gui.</code><code class="sig-name descname">Color</code><a class="headerlink" href="#open3d.visualization.gui.Color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stores color for gui classes</p>
+<dl class="py method">
+<dt id="open3d.visualization.gui.Color.__init__"><a name="//apple_ref/cpp/Method/open3d.visualization.gui.Color.__init__"></a>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.visualization.gui.Color</span></em>, <em class="sig-param"><span class="n">r</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">g</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">b</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">1.0</span></em>, <em class="sig-param"><span class="n">a</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">1.0</span></em><span class="sig-paren">)</span> → None<a class="headerlink" href="#open3d.visualization.gui.Color.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.visualization.gui.Color.set_color"><a name="//apple_ref/cpp/Method/open3d.visualization.gui.Color.set_color"></a>
+<code class="sig-name descname">set_color</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n">open3d.cpu.pybind.visualization.gui.Color</span></em>, <em class="sig-param"><span class="n">r</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">g</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">b</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">a</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">1.0</span></em><span class="sig-paren">)</span> → None<a class="headerlink" href="#open3d.visualization.gui.Color.set_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets red, green, blue, and alpha channels, (range: [0.0, 1.0])</p>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.visualization.gui.Color.alpha"><a name="//apple_ref/cpp/Method/open3d.visualization.gui.Color.alpha"></a>
+<em class="property">property </em><code class="sig-name descname">alpha</code><a class="headerlink" href="#open3d.visualization.gui.Color.alpha" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns alpha channel in the range [0.0, 1.0] (read-only)</p>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.visualization.gui.Color.blue"><a name="//apple_ref/cpp/Method/open3d.visualization.gui.Color.blue"></a>
+<em class="property">property </em><code class="sig-name descname">blue</code><a class="headerlink" href="#open3d.visualization.gui.Color.blue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns blue channel in the range [0.0, 1.0] (read-only)</p>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.visualization.gui.Color.green"><a name="//apple_ref/cpp/Method/open3d.visualization.gui.Color.green"></a>
+<em class="property">property </em><code class="sig-name descname">green</code><a class="headerlink" href="#open3d.visualization.gui.Color.green" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns green channel in the range [0.0, 1.0] (read-only)</p>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.visualization.gui.Color.red"><a name="//apple_ref/cpp/Method/open3d.visualization.gui.Color.red"></a>
+<em class="property">property </em><code class="sig-name descname">red</code><a class="headerlink" href="#open3d.visualization.gui.Color.red" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns red channel in the range [0.0, 1.0] (read-only)</p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+<footer>
+<div aria-label="footer navigation" class="rst-footer-buttons" role="navigation">
+<a accesskey="n" class="btn btn-neutral float-right" href="open3d.visualization.gui.ColorEdit.html" rel="next" title="open3d.visualization.gui.ColorEdit">Next <span class="fa fa-arrow-circle-right"></span></a>
+<a accesskey="p" class="btn btn-neutral float-left" href="open3d.visualization.gui.CollapsableVert.html" rel="prev" title="open3d.visualization.gui.CollapsableVert"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>
+        © Copyright 2018 - 2020, www.open3d.org
+
+    </p>
+</div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="versions" class="rst-versions" data-toggle="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span class="fa fa-book"> Docs version</span>
+    0.11.2
+    <span class="fa fa-caret-down"></span>
+</span>
+<!-- A hack to include an external page to get around CORS policy -->
+<!-- https://stackoverflow.com/a/15250208/1255535 -->
+<div class="rst-other-versions">
+<dl>
+<dt>Versions</dt>
+<dd><ul>
+<script src="http://www.open3d.org/docs/versions.js"></script>
+</ul></dd>
+</dl>
+</div>
+<script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</div></body>
+</html>

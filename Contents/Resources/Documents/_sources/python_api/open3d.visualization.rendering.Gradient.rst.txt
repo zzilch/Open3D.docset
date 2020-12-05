@@ -1,0 +1,9 @@
+open3d.visualization.rendering.Gradient
+---------------------------------------
+
+.. currentmodule:: open3d.visualization.rendering
+
+.. autoclass:: Gradient
+    :members:
+    :undoc-members:
+    :inherited-members:

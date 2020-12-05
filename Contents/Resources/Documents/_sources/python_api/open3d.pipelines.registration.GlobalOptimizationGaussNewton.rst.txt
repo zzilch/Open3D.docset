@@ -1,0 +1,9 @@
+open3d.pipelines.registration.GlobalOptimizationGaussNewton
+-----------------------------------------------------------
+
+.. currentmodule:: open3d.pipelines.registration
+
+.. autoclass:: GlobalOptimizationGaussNewton
+    :members:
+    :undoc-members:
+    :inherited-members:

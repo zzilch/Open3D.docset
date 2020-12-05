@@ -1,0 +1,659 @@
+
+<!DOCTYPE html>
+
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>open3d.geometry.HalfEdgeTriangleMesh — Open3D 0.11.2 documentation</title>
+<link href="../_static/open3d_logo.ico" rel="shortcut icon"/>
+<script src="../_static/js/modernizr.min.js" type="text/javascript"></script>
+<script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js" type="text/javascript"></script>
+<script src="../_static/jquery.js"></script>
+<script src="../_static/underscore.js"></script>
+<script src="../_static/doctools.js"></script>
+<script src="../_static/language_data.js"></script>
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="../_static/js/theme.js" type="text/javascript"></script>
+<link href="../_static/css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/theme_overrides.css" rel="stylesheet" type="text/css"/>
+<link href="../genindex.html" rel="index" title="Index"/>
+<link href="../search.html" rel="search" title="Search"/>
+<link href="open3d.geometry.Image.html" rel="next" title="open3d.geometry.Image"/>
+<link href="open3d.geometry.HalfEdge.html" rel="prev" title="open3d.geometry.HalfEdge"/>
+</head>
+<body class="wy-body-for-nav">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../index.html"> Open3D
+          
+
+          
+          </a>
+<div class="version">
+                0.11.2
+              </div>
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search docs" type="text"/>
+<input name="check_keywords" type="hidden" value="yes"/>
+<input name="area" type="hidden" value="default"/>
+</form>
+</div>
+</div>
+<div aria-label="main navigation" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compilation.html">Build from source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpp_project.html">Build C++ projects with Open3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../builddocs.html">Build documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../open3d_ml.html">Open3D-ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arm.html">ARM support</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/geometry/index.html">Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/pipelines/index.html">Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/visualization/index.html">Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/core/index.html">Tensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/reconstruction_system/index.html">Reconstruction system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/sensor/index.html">Sensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/reference.html">Reference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contribute</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/contribute.html">Contributing to Open3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/contribution_recipes.html">Contribution methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/styleguide.html">Open3D style guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">C++ API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cpp_api.html">C++ documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="open3d.camera.html">open3d.camera</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open3d.core.html">open3d.core</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="open3d.geometry.html">open3d.geometry</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.AxisAlignedBoundingBox.html">AxisAlignedBoundingBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.DeformAsRigidAsPossibleEnergy.html">DeformAsRigidAsPossibleEnergy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.FilterScope.html">FilterScope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.Geometry.html">Geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.Geometry2D.html">Geometry2D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.Geometry3D.html">Geometry3D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.HalfEdge.html">HalfEdge</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">HalfEdgeTriangleMesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.Image.html">Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.ImageFilterType.html">ImageFilterType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.KDTreeFlann.html">KDTreeFlann</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.KDTreeSearchParam.html">KDTreeSearchParam</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.KDTreeSearchParamHybrid.html">KDTreeSearchParamHybrid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.KDTreeSearchParamKNN.html">KDTreeSearchParamKNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.KDTreeSearchParamRadius.html">KDTreeSearchParamRadius</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.LineSet.html">LineSet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.MeshBase.html">MeshBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.Octree.html">Octree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.OctreeColorLeafNode.html">OctreeColorLeafNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.OctreeInternalNode.html">OctreeInternalNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.OctreeLeafNode.html">OctreeLeafNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.OctreeNode.html">OctreeNode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.OctreeNodeInfo.html">OctreeNodeInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.OrientedBoundingBox.html">OrientedBoundingBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.PointCloud.html">PointCloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.RGBDImage.html">RGBDImage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.SimplificationContraction.html">SimplificationContraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.TetraMesh.html">TetraMesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.TriangleMesh.html">TriangleMesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.Voxel.html">Voxel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.VoxelGrid.html">VoxelGrid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.get_rotation_matrix_from_axis_angle.html">get_rotation_matrix_from_axis_angle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.get_rotation_matrix_from_quaternion.html">get_rotation_matrix_from_quaternion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.get_rotation_matrix_from_xyz.html">get_rotation_matrix_from_xyz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.get_rotation_matrix_from_xzy.html">get_rotation_matrix_from_xzy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.get_rotation_matrix_from_yxz.html">get_rotation_matrix_from_yxz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.get_rotation_matrix_from_yzx.html">get_rotation_matrix_from_yzx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.get_rotation_matrix_from_zxy.html">get_rotation_matrix_from_zxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open3d.geometry.get_rotation_matrix_from_zyx.html">get_rotation_matrix_from_zyx</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="open3d.io.html">open3d.io</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open3d.t.html">open3d.t</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open3d.ml.html">open3d.ml</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open3d.pipelines.html">open3d.pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open3d.utility.html">open3d.utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open3d.visualization.html">open3d.visualization</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="top navigation" class="wy-nav-top">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../index.html">Open3D</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a href="../index.html">Docs</a> »</li>
+<li><a href="open3d.geometry.html">open3d.geometry</a> »</li>
+<li>open3d.geometry.HalfEdgeTriangleMesh</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div itemprop="articleBody">
+<div class="section" id="open3d-geometry-halfedgetrianglemesh">
+<h1>open3d.geometry.HalfEdgeTriangleMesh<a class="headerlink" href="#open3d-geometry-halfedgetrianglemesh" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh"><a name="//apple_ref/cpp/Class/open3d.geometry.HalfEdgeTriangleMesh"></a>
+<em class="property">class </em><code class="sig-prename descclassname">open3d.geometry.</code><code class="sig-name descname">HalfEdgeTriangleMesh</code><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh" title="Permalink to this definition">¶</a></dt>
+<dd><p>HalfEdgeTriangleMesh inherits TriangleMesh class with the addition of HalfEdge data structure for each half edge in the mesh as well as related functions.</p>
+<dl class="py class">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.Type"><a name="//apple_ref/cpp/Class/open3d.geometry.HalfEdgeTriangleMesh.Type"></a>
+<em class="property">class </em><code class="sig-name descname">Type</code><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.Type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enum class for Geometry types.</p>
+<dl class="py attribute">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.Type.HalfEdgeTriangleMesh"><a name="//apple_ref/cpp/Attribute/open3d.geometry.HalfEdgeTriangleMesh.Type.HalfEdgeTriangleMesh"></a>
+<code class="sig-name descname">HalfEdgeTriangleMesh</code><em class="property"> = Type.HalfEdgeTriangleMesh</em><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.Type.HalfEdgeTriangleMesh" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.Type.Image"><a name="//apple_ref/cpp/Attribute/open3d.geometry.HalfEdgeTriangleMesh.Type.Image"></a>
+<code class="sig-name descname">Image</code><em class="property"> = Type.Image</em><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.Type.Image" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.Type.LineSet"><a name="//apple_ref/cpp/Attribute/open3d.geometry.HalfEdgeTriangleMesh.Type.LineSet"></a>
+<code class="sig-name descname">LineSet</code><em class="property"> = Type.LineSet</em><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.Type.LineSet" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.Type.PointCloud"><a name="//apple_ref/cpp/Attribute/open3d.geometry.HalfEdgeTriangleMesh.Type.PointCloud"></a>
+<code class="sig-name descname">PointCloud</code><em class="property"> = Type.PointCloud</em><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.Type.PointCloud" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.Type.RGBDImage"><a name="//apple_ref/cpp/Attribute/open3d.geometry.HalfEdgeTriangleMesh.Type.RGBDImage"></a>
+<code class="sig-name descname">RGBDImage</code><em class="property"> = Type.RGBDImage</em><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.Type.RGBDImage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.Type.TetraMesh"><a name="//apple_ref/cpp/Attribute/open3d.geometry.HalfEdgeTriangleMesh.Type.TetraMesh"></a>
+<code class="sig-name descname">TetraMesh</code><em class="property"> = Type.TetraMesh</em><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.Type.TetraMesh" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.Type.TriangleMesh"><a name="//apple_ref/cpp/Attribute/open3d.geometry.HalfEdgeTriangleMesh.Type.TriangleMesh"></a>
+<code class="sig-name descname">TriangleMesh</code><em class="property"> = Type.TriangleMesh</em><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.Type.TriangleMesh" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.Type.Unspecified"><a name="//apple_ref/cpp/Attribute/open3d.geometry.HalfEdgeTriangleMesh.Type.Unspecified"></a>
+<code class="sig-name descname">Unspecified</code><em class="property"> = Type.Unspecified</em><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.Type.Unspecified" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.Type.VoxelGrid"><a name="//apple_ref/cpp/Attribute/open3d.geometry.HalfEdgeTriangleMesh.Type.VoxelGrid"></a>
+<code class="sig-name descname">VoxelGrid</code><em class="property"> = Type.VoxelGrid</em><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.Type.VoxelGrid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.__init__"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.__init__"></a>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>__init__(self: open3d.cpu.pybind.geometry.HalfEdgeTriangleMesh) -&gt; None</p></li>
+</ol>
+<p>Default constructor</p>
+<ol class="arabic simple" start="2">
+<li><p>__init__(self: open3d.cpu.pybind.geometry.HalfEdgeTriangleMesh, arg0: open3d.cpu.pybind.geometry.HalfEdgeTriangleMesh) -&gt; None</p></li>
+</ol>
+<p>Copy constructor</p>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.boundary_half_edges_from_vertex"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.boundary_half_edges_from_vertex"></a>
+<code class="sig-name descname">boundary_half_edges_from_vertex</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">vertex_index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.boundary_half_edges_from_vertex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query manifold boundary half edges from a starting vertex. If query vertex is not on boundary, empty vector will be returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>vertex_index</strong> (<em>int</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>open3d.cpu.pybind.utility.IntVector</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.boundary_vertices_from_vertex"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.boundary_vertices_from_vertex"></a>
+<code class="sig-name descname">boundary_vertices_from_vertex</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.boundary_vertices_from_vertex" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>open3d.cpu.pybind.utility.IntVector</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.clear"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.clear"></a>
+<code class="sig-name descname">clear</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear all elements in the geometry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>open3d.cpu.pybind.geometry.Geometry</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.compute_convex_hull"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.compute_convex_hull"></a>
+<code class="sig-name descname">compute_convex_hull</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.compute_convex_hull" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the convex hull of the triangle mesh.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Tuple[open3d.geometry.TriangleMesh, List[int]]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.create_from_triangle_mesh"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.create_from_triangle_mesh"></a>
+<em class="property">static </em><code class="sig-name descname">create_from_triangle_mesh</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mesh</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.create_from_triangle_mesh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert HalfEdgeTriangleMesh from TriangleMesh. Throws exception if the input mesh is not manifolds</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mesh</strong> (<em>open3d.cpu.pybind.geometry.TriangleMesh</em>) – The input TriangleMesh</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>open3d.cpu.pybind.geometry.HalfEdgeTriangleMesh</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.dimension"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.dimension"></a>
+<code class="sig-name descname">dimension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.dimension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether the geometry is 2D or 3D.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.get_axis_aligned_bounding_box"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.get_axis_aligned_bounding_box"></a>
+<code class="sig-name descname">get_axis_aligned_bounding_box</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.get_axis_aligned_bounding_box" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an axis-aligned bounding box of the geometry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>open3d.geometry.AxisAlignedBoundingBox</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.get_boundaries"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.get_boundaries"></a>
+<code class="sig-name descname">get_boundaries</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.get_boundaries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a vector of boundaries. A boundary is a vector of vertices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List[open3d.cpu.pybind.utility.IntVector]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.get_center"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.get_center"></a>
+<code class="sig-name descname">get_center</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.get_center" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the center of the geometry coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>numpy.ndarray[float64[3, 1]]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.get_geometry_type"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.get_geometry_type"></a>
+<code class="sig-name descname">get_geometry_type</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.get_geometry_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns one of registered geometry types.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>open3d.geometry.Geometry.GeometryType</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.get_max_bound"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.get_max_bound"></a>
+<code class="sig-name descname">get_max_bound</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.get_max_bound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns max bounds for geometry coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>numpy.ndarray[float64[3, 1]]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.get_min_bound"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.get_min_bound"></a>
+<code class="sig-name descname">get_min_bound</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.get_min_bound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns min bounds for geometry coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>numpy.ndarray[float64[3, 1]]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.get_oriented_bounding_box"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.get_oriented_bounding_box"></a>
+<code class="sig-name descname">get_oriented_bounding_box</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.get_oriented_bounding_box" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an oriented bounding box of the geometry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>open3d.geometry.OrientedBoundingBox</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.get_rotation_matrix_from_axis_angle"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.get_rotation_matrix_from_axis_angle"></a>
+<em class="property">static </em><code class="sig-name descname">get_rotation_matrix_from_axis_angle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rotation</span><span class="p">:</span> <span class="n">numpy.ndarray[float64[3, 1]]</span></em><span class="sig-paren">)</span> → numpy.ndarray[float64[3, 3]]<a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.get_rotation_matrix_from_axis_angle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.get_rotation_matrix_from_quaternion"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.get_rotation_matrix_from_quaternion"></a>
+<em class="property">static </em><code class="sig-name descname">get_rotation_matrix_from_quaternion</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rotation</span><span class="p">:</span> <span class="n">numpy.ndarray[float64[4, 1]]</span></em><span class="sig-paren">)</span> → numpy.ndarray[float64[3, 3]]<a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.get_rotation_matrix_from_quaternion" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.get_rotation_matrix_from_xyz"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.get_rotation_matrix_from_xyz"></a>
+<em class="property">static </em><code class="sig-name descname">get_rotation_matrix_from_xyz</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rotation</span><span class="p">:</span> <span class="n">numpy.ndarray[float64[3, 1]]</span></em><span class="sig-paren">)</span> → numpy.ndarray[float64[3, 3]]<a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.get_rotation_matrix_from_xyz" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.get_rotation_matrix_from_xzy"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.get_rotation_matrix_from_xzy"></a>
+<em class="property">static </em><code class="sig-name descname">get_rotation_matrix_from_xzy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rotation</span><span class="p">:</span> <span class="n">numpy.ndarray[float64[3, 1]]</span></em><span class="sig-paren">)</span> → numpy.ndarray[float64[3, 3]]<a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.get_rotation_matrix_from_xzy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.get_rotation_matrix_from_yxz"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.get_rotation_matrix_from_yxz"></a>
+<em class="property">static </em><code class="sig-name descname">get_rotation_matrix_from_yxz</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rotation</span><span class="p">:</span> <span class="n">numpy.ndarray[float64[3, 1]]</span></em><span class="sig-paren">)</span> → numpy.ndarray[float64[3, 3]]<a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.get_rotation_matrix_from_yxz" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.get_rotation_matrix_from_yzx"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.get_rotation_matrix_from_yzx"></a>
+<em class="property">static </em><code class="sig-name descname">get_rotation_matrix_from_yzx</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rotation</span><span class="p">:</span> <span class="n">numpy.ndarray[float64[3, 1]]</span></em><span class="sig-paren">)</span> → numpy.ndarray[float64[3, 3]]<a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.get_rotation_matrix_from_yzx" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.get_rotation_matrix_from_zxy"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.get_rotation_matrix_from_zxy"></a>
+<em class="property">static </em><code class="sig-name descname">get_rotation_matrix_from_zxy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rotation</span><span class="p">:</span> <span class="n">numpy.ndarray[float64[3, 1]]</span></em><span class="sig-paren">)</span> → numpy.ndarray[float64[3, 3]]<a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.get_rotation_matrix_from_zxy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.get_rotation_matrix_from_zyx"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.get_rotation_matrix_from_zyx"></a>
+<em class="property">static </em><code class="sig-name descname">get_rotation_matrix_from_zyx</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rotation</span><span class="p">:</span> <span class="n">numpy.ndarray[float64[3, 1]]</span></em><span class="sig-paren">)</span> → numpy.ndarray[float64[3, 3]]<a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.get_rotation_matrix_from_zyx" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.has_half_edges"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.has_half_edges"></a>
+<code class="sig-name descname">has_half_edges</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.has_half_edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if half-edges have already been computed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.has_vertex_colors"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.has_vertex_colors"></a>
+<code class="sig-name descname">has_vertex_colors</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.has_vertex_colors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the mesh contains vertex colors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.has_vertex_normals"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.has_vertex_normals"></a>
+<code class="sig-name descname">has_vertex_normals</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.has_vertex_normals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the mesh contains vertex normals.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.has_vertices"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.has_vertices"></a>
+<code class="sig-name descname">has_vertices</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.has_vertices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the mesh contains vertices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.is_empty"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.is_empty"></a>
+<code class="sig-name descname">is_empty</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.is_empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> iff the geometry is empty.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.normalize_normals"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.normalize_normals"></a>
+<code class="sig-name descname">normalize_normals</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.normalize_normals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalize vertex normals to length 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>open3d.cpu.pybind.geometry.MeshBase</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.paint_uniform_color"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.paint_uniform_color"></a>
+<code class="sig-name descname">paint_uniform_color</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">color</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.paint_uniform_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assigns each vertex in the MeshBase the same color.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>color</strong> (<em>numpy.ndarray</em><em>[</em><em>float64</em><em>[</em><em>3</em><em>, </em><em>1</em><em>]</em><em>]</em>) – RGB colors of vertices.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>open3d.cpu.pybind.geometry.MeshBase</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt>
+<code class="sig-name descname">HalfEdgeTriangleMesh.rotate(R, R, center)</code></dt>
+<dd><p>Apply rotation to the geometry coordinates and normals.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>R</strong> (<em>numpy.ndarray</em><em>[</em><em>float64</em><em>[</em><em>3</em><em>, </em><em>3</em><em>]</em><em>]</em>) – The rotation matrix</p></li>
+<li><p><strong>R</strong> – The rotation matrix</p></li>
+<li><p><strong>center</strong> (<em>numpy.ndarray</em><em>[</em><em>float64</em><em>[</em><em>3</em><em>, </em><em>1</em><em>]</em><em>]</em>) – Rotation center used for transformation</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>open3d.cpu.pybind.geometry.Geometry3D</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt>
+<code class="sig-name descname">HalfEdgeTriangleMesh.scale(scale, center, scale, center)</code></dt>
+<dd><p>Apply scaling to the geometry coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>scale</strong> (<em>float</em>) – The scale parameter that is multiplied to the points/vertices of the geometry</p></li>
+<li><p><strong>center</strong> (<em>numpy.ndarray</em><em>[</em><em>float64</em><em>[</em><em>3</em><em>, </em><em>1</em><em>]</em><em>]</em>) – Scale center used for transformation</p></li>
+<li><p><strong>scale</strong> – The scale parameter that is multiplied to the points/vertices of the geometry</p></li>
+<li><p><strong>center</strong> – Scale center used for transformation</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>open3d.cpu.pybind.geometry.Geometry3D</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.transform"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.transform"></a>
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">arg0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply transformation (4x4 matrix) to the geometry coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>arg0</strong> (<em>numpy.ndarray</em><em>[</em><em>float64</em><em>[</em><em>4</em><em>, </em><em>4</em><em>]</em><em>]</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>open3d.cpu.pybind.geometry.Geometry3D</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.translate"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.translate"></a>
+<code class="sig-name descname">translate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">translation</span></em>, <em class="sig-param"><span class="n">relative</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.translate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply translation to the geometry coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>translation</strong> (<em>numpy.ndarray</em><em>[</em><em>float64</em><em>[</em><em>3</em><em>, </em><em>1</em><em>]</em><em>]</em>) – A 3D vector to transform the geometry</p></li>
+<li><p><strong>relative</strong> (<em>bool</em><em>, </em><em>optional</em><em>, </em><em>default=True</em>) – If true, the translation vector is directly added to the geometry coordinates. Otherwise, the center is moved to the translation vector.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>open3d.cpu.pybind.geometry.Geometry3D</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py attribute">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.HalfEdgeTriangleMesh"><a name="//apple_ref/cpp/Attribute/open3d.geometry.HalfEdgeTriangleMesh.HalfEdgeTriangleMesh"></a>
+<code class="sig-name descname">HalfEdgeTriangleMesh</code><em class="property"> = Type.HalfEdgeTriangleMesh</em><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.HalfEdgeTriangleMesh" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.Image"><a name="//apple_ref/cpp/Attribute/open3d.geometry.HalfEdgeTriangleMesh.Image"></a>
+<code class="sig-name descname">Image</code><em class="property"> = Type.Image</em><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.Image" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.LineSet"><a name="//apple_ref/cpp/Attribute/open3d.geometry.HalfEdgeTriangleMesh.LineSet"></a>
+<code class="sig-name descname">LineSet</code><em class="property"> = Type.LineSet</em><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.LineSet" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.PointCloud"><a name="//apple_ref/cpp/Attribute/open3d.geometry.HalfEdgeTriangleMesh.PointCloud"></a>
+<code class="sig-name descname">PointCloud</code><em class="property"> = Type.PointCloud</em><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.PointCloud" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.RGBDImage"><a name="//apple_ref/cpp/Attribute/open3d.geometry.HalfEdgeTriangleMesh.RGBDImage"></a>
+<code class="sig-name descname">RGBDImage</code><em class="property"> = Type.RGBDImage</em><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.RGBDImage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.TetraMesh"><a name="//apple_ref/cpp/Attribute/open3d.geometry.HalfEdgeTriangleMesh.TetraMesh"></a>
+<code class="sig-name descname">TetraMesh</code><em class="property"> = Type.TetraMesh</em><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.TetraMesh" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.TriangleMesh"><a name="//apple_ref/cpp/Attribute/open3d.geometry.HalfEdgeTriangleMesh.TriangleMesh"></a>
+<code class="sig-name descname">TriangleMesh</code><em class="property"> = Type.TriangleMesh</em><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.TriangleMesh" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.Unspecified"><a name="//apple_ref/cpp/Attribute/open3d.geometry.HalfEdgeTriangleMesh.Unspecified"></a>
+<code class="sig-name descname">Unspecified</code><em class="property"> = Type.Unspecified</em><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.Unspecified" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py attribute">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.VoxelGrid"><a name="//apple_ref/cpp/Attribute/open3d.geometry.HalfEdgeTriangleMesh.VoxelGrid"></a>
+<code class="sig-name descname">VoxelGrid</code><em class="property"> = Type.VoxelGrid</em><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.VoxelGrid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.half_edges"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.half_edges"></a>
+<em class="property">property </em><code class="sig-name descname">half_edges</code><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.half_edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of HalfEdge in the mesh</p>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.ordered_half_edge_from_vertex"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.ordered_half_edge_from_vertex"></a>
+<em class="property">property </em><code class="sig-name descname">ordered_half_edge_from_vertex</code><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.ordered_half_edge_from_vertex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Counter-clockwise ordered half-edges started from each vertex</p>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.triangle_normals"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.triangle_normals"></a>
+<em class="property">property </em><code class="sig-name descname">triangle_normals</code><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.triangle_normals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Triangle normals.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">float64</span></code> array of shape <code class="docutils literal notranslate"><span class="pre">(num_triangles,</span> <span class="pre">3)</span></code>, use <code class="docutils literal notranslate"><span class="pre">numpy.asarray()</span></code> to access data</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.triangles"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.triangles"></a>
+<em class="property">property </em><code class="sig-name descname">triangles</code><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.triangles" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of triangles denoted by the index of points forming the triangle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">int</span></code> array of shape <code class="docutils literal notranslate"><span class="pre">(num_triangles,</span> <span class="pre">3)</span></code>, use <code class="docutils literal notranslate"><span class="pre">numpy.asarray()</span></code> to access data</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.vertex_colors"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.vertex_colors"></a>
+<em class="property">property </em><code class="sig-name descname">vertex_colors</code><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.vertex_colors" title="Permalink to this definition">¶</a></dt>
+<dd><p>RGB colors of vertices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">float64</span></code> array of shape <code class="docutils literal notranslate"><span class="pre">(num_vertices,</span> <span class="pre">3)</span></code>, range <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code> , use <code class="docutils literal notranslate"><span class="pre">numpy.asarray()</span></code> to access data</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.vertex_normals"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.vertex_normals"></a>
+<em class="property">property </em><code class="sig-name descname">vertex_normals</code><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.vertex_normals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Vertex normals.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">float64</span></code> array of shape <code class="docutils literal notranslate"><span class="pre">(num_vertices,</span> <span class="pre">3)</span></code>, use <code class="docutils literal notranslate"><span class="pre">numpy.asarray()</span></code> to access data</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt id="open3d.geometry.HalfEdgeTriangleMesh.vertices"><a name="//apple_ref/cpp/Method/open3d.geometry.HalfEdgeTriangleMesh.vertices"></a>
+<em class="property">property </em><code class="sig-name descname">vertices</code><a class="headerlink" href="#open3d.geometry.HalfEdgeTriangleMesh.vertices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Vertex coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">float64</span></code> array of shape <code class="docutils literal notranslate"><span class="pre">(num_vertices,</span> <span class="pre">3)</span></code>, use <code class="docutils literal notranslate"><span class="pre">numpy.asarray()</span></code> to access data</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+<footer>
+<div aria-label="footer navigation" class="rst-footer-buttons" role="navigation">
+<a accesskey="n" class="btn btn-neutral float-right" href="open3d.geometry.Image.html" rel="next" title="open3d.geometry.Image">Next <span class="fa fa-arrow-circle-right"></span></a>
+<a accesskey="p" class="btn btn-neutral float-left" href="open3d.geometry.HalfEdge.html" rel="prev" title="open3d.geometry.HalfEdge"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+</div>
+<hr/>
+<div role="contentinfo">
+<p>
+        © Copyright 2018 - 2020, www.open3d.org
+
+    </p>
+</div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="versions" class="rst-versions" data-toggle="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span class="fa fa-book"> Docs version</span>
+    0.11.2
+    <span class="fa fa-caret-down"></span>
+</span>
+<!-- A hack to include an external page to get around CORS policy -->
+<!-- https://stackoverflow.com/a/15250208/1255535 -->
+<div class="rst-other-versions">
+<dl>
+<dt>Versions</dt>
+<dd><ul>
+<script src="http://www.open3d.org/docs/versions.js"></script>
+</ul></dd>
+</dl>
+</div>
+<script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+</div></body>
+</html>

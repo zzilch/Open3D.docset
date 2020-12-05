@@ -1,0 +1,9 @@
+open3d.visualization.rendering.Scene
+------------------------------------
+
+.. currentmodule:: open3d.visualization.rendering
+
+.. autoclass:: Scene
+    :members:
+    :undoc-members:
+    :inherited-members:

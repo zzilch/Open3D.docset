@@ -1,0 +1,6 @@
+open3d.core.matmul
+------------------
+
+.. currentmodule:: open3d.core
+
+.. autofunction:: matmul

@@ -1,0 +1,9 @@
+open3d.visualization.gui.Application
+------------------------------------
+
+.. currentmodule:: open3d.visualization.gui
+
+.. autoclass:: Application
+    :members:
+    :undoc-members:
+    :inherited-members:

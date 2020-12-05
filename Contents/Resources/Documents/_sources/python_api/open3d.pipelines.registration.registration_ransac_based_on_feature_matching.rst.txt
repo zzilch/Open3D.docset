@@ -1,0 +1,6 @@
+open3d.pipelines.registration.registration_ransac_based_on_feature_matching
+---------------------------------------------------------------------------
+
+.. currentmodule:: open3d.pipelines.registration
+
+.. autofunction:: registration_ransac_based_on_feature_matching

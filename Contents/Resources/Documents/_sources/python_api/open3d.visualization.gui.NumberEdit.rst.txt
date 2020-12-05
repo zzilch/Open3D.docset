@@ -1,0 +1,9 @@
+open3d.visualization.gui.NumberEdit
+-----------------------------------
+
+.. currentmodule:: open3d.visualization.gui
+
+.. autoclass:: NumberEdit
+    :members:
+    :undoc-members:
+    :inherited-members:

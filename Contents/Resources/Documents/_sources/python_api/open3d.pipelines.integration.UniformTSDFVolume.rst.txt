@@ -1,0 +1,9 @@
+open3d.pipelines.integration.UniformTSDFVolume
+----------------------------------------------
+
+.. currentmodule:: open3d.pipelines.integration
+
+.. autoclass:: UniformTSDFVolume
+    :members:
+    :undoc-members:
+    :inherited-members:

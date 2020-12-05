@@ -1,0 +1,6 @@
+open3d.pipelines.registration.get_information_matrix_from_point_clouds
+----------------------------------------------------------------------
+
+.. currentmodule:: open3d.pipelines.registration
+
+.. autofunction:: get_information_matrix_from_point_clouds

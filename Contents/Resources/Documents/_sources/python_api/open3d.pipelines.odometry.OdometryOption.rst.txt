@@ -1,0 +1,9 @@
+open3d.pipelines.odometry.OdometryOption
+----------------------------------------
+
+.. currentmodule:: open3d.pipelines.odometry
+
+.. autoclass:: OdometryOption
+    :members:
+    :undoc-members:
+    :inherited-members:

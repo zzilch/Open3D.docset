@@ -1,0 +1,9 @@
+open3d.pipelines.color_map.ColorMapOptimizationOption
+-----------------------------------------------------
+
+.. currentmodule:: open3d.pipelines.color_map
+
+.. autoclass:: ColorMapOptimizationOption
+    :members:
+    :undoc-members:
+    :inherited-members:

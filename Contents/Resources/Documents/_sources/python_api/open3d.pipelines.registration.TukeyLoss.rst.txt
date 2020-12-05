@@ -1,0 +1,9 @@
+open3d.pipelines.registration.TukeyLoss
+---------------------------------------
+
+.. currentmodule:: open3d.pipelines.registration
+
+.. autoclass:: TukeyLoss
+    :members:
+    :undoc-members:
+    :inherited-members:

@@ -1,0 +1,9 @@
+open3d.visualization.gui.ImageLabel
+-----------------------------------
+
+.. currentmodule:: open3d.visualization.gui
+
+.. autoclass:: ImageLabel
+    :members:
+    :undoc-members:
+    :inherited-members:

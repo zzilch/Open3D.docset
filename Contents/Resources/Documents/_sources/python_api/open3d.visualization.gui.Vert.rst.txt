@@ -1,0 +1,9 @@
+open3d.visualization.gui.Vert
+-----------------------------
+
+.. currentmodule:: open3d.visualization.gui
+
+.. autoclass:: Vert
+    :members:
+    :undoc-members:
+    :inherited-members:

@@ -1,0 +1,9 @@
+open3d.visualization.gui.VGrid
+------------------------------
+
+.. currentmodule:: open3d.visualization.gui
+
+.. autoclass:: VGrid
+    :members:
+    :undoc-members:
+    :inherited-members:

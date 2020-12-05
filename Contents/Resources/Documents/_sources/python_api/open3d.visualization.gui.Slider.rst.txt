@@ -1,0 +1,9 @@
+open3d.visualization.gui.Slider
+-------------------------------
+
+.. currentmodule:: open3d.visualization.gui
+
+.. autoclass:: Slider
+    :members:
+    :undoc-members:
+    :inherited-members:

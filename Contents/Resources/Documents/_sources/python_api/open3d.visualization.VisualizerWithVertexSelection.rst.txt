@@ -1,0 +1,9 @@
+open3d.visualization.VisualizerWithVertexSelection
+--------------------------------------------------
+
+.. currentmodule:: open3d.visualization
+
+.. autoclass:: VisualizerWithVertexSelection
+    :members:
+    :undoc-members:
+    :inherited-members:

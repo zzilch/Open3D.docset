@@ -1,0 +1,22 @@
+open3d.pipelines.integration
+----------------------------
+
+.. currentmodule:: open3d.pipelines.integration
+
+**Classes**
+
+.. autosummary::
+
+    ScalableTSDFVolume
+    TSDFVolume
+    TSDFVolumeColorType
+    UniformTSDFVolume
+
+
+.. toctree::
+    :hidden:
+
+    ScalableTSDFVolume <open3d.pipelines.integration.ScalableTSDFVolume>
+    TSDFVolume <open3d.pipelines.integration.TSDFVolume>
+    TSDFVolumeColorType <open3d.pipelines.integration.TSDFVolumeColorType>
+    UniformTSDFVolume <open3d.pipelines.integration.UniformTSDFVolume>

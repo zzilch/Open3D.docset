@@ -1,0 +1,9 @@
+open3d.visualization.gui.WindowBase
+-----------------------------------
+
+.. currentmodule:: open3d.visualization.gui
+
+.. autoclass:: WindowBase
+    :members:
+    :undoc-members:
+    :inherited-members:

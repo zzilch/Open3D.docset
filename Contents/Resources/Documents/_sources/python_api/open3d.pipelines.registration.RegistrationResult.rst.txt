@@ -1,0 +1,9 @@
+open3d.pipelines.registration.RegistrationResult
+------------------------------------------------
+
+.. currentmodule:: open3d.pipelines.registration
+
+.. autoclass:: RegistrationResult
+    :members:
+    :undoc-members:
+    :inherited-members:

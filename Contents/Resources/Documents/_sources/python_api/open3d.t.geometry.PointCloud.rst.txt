@@ -1,0 +1,9 @@
+open3d.t.geometry.PointCloud
+----------------------------
+
+.. currentmodule:: open3d.t.geometry
+
+.. autoclass:: PointCloud
+    :members:
+    :undoc-members:
+    :inherited-members:

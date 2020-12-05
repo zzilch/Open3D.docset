@@ -1,0 +1,6 @@
+open3d.core._numpy_dtype_to_dtype
+---------------------------------
+
+.. currentmodule:: open3d.core
+
+.. autofunction:: _numpy_dtype_to_dtype

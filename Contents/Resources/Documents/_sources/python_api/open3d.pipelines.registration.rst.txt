@@ -1,0 +1,98 @@
+open3d.pipelines.registration
+-----------------------------
+
+.. currentmodule:: open3d.pipelines.registration
+
+**Classes**
+
+.. autosummary::
+
+    CauchyLoss
+    CorrespondenceChecker
+    CorrespondenceCheckerBasedOnDistance
+    CorrespondenceCheckerBasedOnEdgeLength
+    CorrespondenceCheckerBasedOnNormal
+    FastGlobalRegistrationOption
+    Feature
+    GMLoss
+    GlobalOptimizationConvergenceCriteria
+    GlobalOptimizationGaussNewton
+    GlobalOptimizationLevenbergMarquardt
+    GlobalOptimizationMethod
+    GlobalOptimizationOption
+    HuberLoss
+    ICPConvergenceCriteria
+    L1Loss
+    L2Loss
+    PoseGraph
+    PoseGraphEdge
+    PoseGraphEdgeVector
+    PoseGraphNode
+    PoseGraphNodeVector
+    RANSACConvergenceCriteria
+    RegistrationResult
+    RobustKernel
+    TransformationEstimation
+    TransformationEstimationForColoredICP
+    TransformationEstimationPointToPlane
+    TransformationEstimationPointToPoint
+    TukeyLoss
+
+
+**Functions**
+
+.. autosummary::
+
+    compute_fpfh_feature
+    evaluate_registration
+    get_information_matrix_from_point_clouds
+    global_optimization
+    registration_colored_icp
+    registration_fast_based_on_feature_matching
+    registration_icp
+    registration_ransac_based_on_correspondence
+    registration_ransac_based_on_feature_matching
+
+
+.. toctree::
+    :hidden:
+
+    CauchyLoss <open3d.pipelines.registration.CauchyLoss>
+    CorrespondenceChecker <open3d.pipelines.registration.CorrespondenceChecker>
+    CorrespondenceCheckerBasedOnDistance <open3d.pipelines.registration.CorrespondenceCheckerBasedOnDistance>
+    CorrespondenceCheckerBasedOnEdgeLength <open3d.pipelines.registration.CorrespondenceCheckerBasedOnEdgeLength>
+    CorrespondenceCheckerBasedOnNormal <open3d.pipelines.registration.CorrespondenceCheckerBasedOnNormal>
+    FastGlobalRegistrationOption <open3d.pipelines.registration.FastGlobalRegistrationOption>
+    Feature <open3d.pipelines.registration.Feature>
+    GMLoss <open3d.pipelines.registration.GMLoss>
+    GlobalOptimizationConvergenceCriteria <open3d.pipelines.registration.GlobalOptimizationConvergenceCriteria>
+    GlobalOptimizationGaussNewton <open3d.pipelines.registration.GlobalOptimizationGaussNewton>
+    GlobalOptimizationLevenbergMarquardt <open3d.pipelines.registration.GlobalOptimizationLevenbergMarquardt>
+    GlobalOptimizationMethod <open3d.pipelines.registration.GlobalOptimizationMethod>
+    GlobalOptimizationOption <open3d.pipelines.registration.GlobalOptimizationOption>
+    HuberLoss <open3d.pipelines.registration.HuberLoss>
+    ICPConvergenceCriteria <open3d.pipelines.registration.ICPConvergenceCriteria>
+    L1Loss <open3d.pipelines.registration.L1Loss>
+    L2Loss <open3d.pipelines.registration.L2Loss>
+    PoseGraph <open3d.pipelines.registration.PoseGraph>
+    PoseGraphEdge <open3d.pipelines.registration.PoseGraphEdge>
+    PoseGraphEdgeVector <open3d.pipelines.registration.PoseGraphEdgeVector>
+    PoseGraphNode <open3d.pipelines.registration.PoseGraphNode>
+    PoseGraphNodeVector <open3d.pipelines.registration.PoseGraphNodeVector>
+    RANSACConvergenceCriteria <open3d.pipelines.registration.RANSACConvergenceCriteria>
+    RegistrationResult <open3d.pipelines.registration.RegistrationResult>
+    RobustKernel <open3d.pipelines.registration.RobustKernel>
+    TransformationEstimation <open3d.pipelines.registration.TransformationEstimation>
+    TransformationEstimationForColoredICP <open3d.pipelines.registration.TransformationEstimationForColoredICP>
+    TransformationEstimationPointToPlane <open3d.pipelines.registration.TransformationEstimationPointToPlane>
+    TransformationEstimationPointToPoint <open3d.pipelines.registration.TransformationEstimationPointToPoint>
+    TukeyLoss <open3d.pipelines.registration.TukeyLoss>
+    compute_fpfh_feature <open3d.pipelines.registration.compute_fpfh_feature>
+    evaluate_registration <open3d.pipelines.registration.evaluate_registration>
+    get_information_matrix_from_point_clouds <open3d.pipelines.registration.get_information_matrix_from_point_clouds>
+    global_optimization <open3d.pipelines.registration.global_optimization>
+    registration_colored_icp <open3d.pipelines.registration.registration_colored_icp>
+    registration_fast_based_on_feature_matching <open3d.pipelines.registration.registration_fast_based_on_feature_matching>
+    registration_icp <open3d.pipelines.registration.registration_icp>
+    registration_ransac_based_on_correspondence <open3d.pipelines.registration.registration_ransac_based_on_correspondence>
+    registration_ransac_based_on_feature_matching <open3d.pipelines.registration.registration_ransac_based_on_feature_matching>

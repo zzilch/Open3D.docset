@@ -1,0 +1,9 @@
+open3d.pipelines.registration.CauchyLoss
+----------------------------------------
+
+.. currentmodule:: open3d.pipelines.registration
+
+.. autoclass:: CauchyLoss
+    :members:
+    :undoc-members:
+    :inherited-members:

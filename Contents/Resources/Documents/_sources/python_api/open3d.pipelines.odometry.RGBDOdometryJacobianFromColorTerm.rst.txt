@@ -1,0 +1,9 @@
+open3d.pipelines.odometry.RGBDOdometryJacobianFromColorTerm
+-----------------------------------------------------------
+
+.. currentmodule:: open3d.pipelines.odometry
+
+.. autoclass:: RGBDOdometryJacobianFromColorTerm
+    :members:
+    :undoc-members:
+    :inherited-members:

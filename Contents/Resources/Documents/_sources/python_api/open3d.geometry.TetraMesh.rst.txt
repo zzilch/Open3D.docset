@@ -1,0 +1,9 @@
+open3d.geometry.TetraMesh
+-------------------------
+
+.. currentmodule:: open3d.geometry
+
+.. autoclass:: TetraMesh
+    :members:
+    :undoc-members:
+    :inherited-members:

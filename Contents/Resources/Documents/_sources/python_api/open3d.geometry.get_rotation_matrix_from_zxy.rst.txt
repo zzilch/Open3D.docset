@@ -1,0 +1,6 @@
+open3d.geometry.get_rotation_matrix_from_zxy
+--------------------------------------------
+
+.. currentmodule:: open3d.geometry
+
+.. autofunction:: get_rotation_matrix_from_zxy

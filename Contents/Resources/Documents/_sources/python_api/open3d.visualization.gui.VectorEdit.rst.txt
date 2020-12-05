@@ -1,0 +1,9 @@
+open3d.visualization.gui.VectorEdit
+-----------------------------------
+
+.. currentmodule:: open3d.visualization.gui
+
+.. autoclass:: VectorEdit
+    :members:
+    :undoc-members:
+    :inherited-members:

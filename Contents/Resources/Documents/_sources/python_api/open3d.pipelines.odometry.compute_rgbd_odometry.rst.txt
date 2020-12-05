@@ -1,0 +1,6 @@
+open3d.pipelines.odometry.compute_rgbd_odometry
+-----------------------------------------------
+
+.. currentmodule:: open3d.pipelines.odometry
+
+.. autofunction:: compute_rgbd_odometry

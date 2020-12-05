@@ -1,0 +1,9 @@
+open3d.visualization.gui.Color
+------------------------------
+
+.. currentmodule:: open3d.visualization.gui
+
+.. autoclass:: Color
+    :members:
+    :undoc-members:
+    :inherited-members:

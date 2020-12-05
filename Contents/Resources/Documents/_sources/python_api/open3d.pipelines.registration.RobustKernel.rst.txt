@@ -1,0 +1,9 @@
+open3d.pipelines.registration.RobustKernel
+------------------------------------------
+
+.. currentmodule:: open3d.pipelines.registration
+
+.. autoclass:: RobustKernel
+    :members:
+    :undoc-members:
+    :inherited-members:

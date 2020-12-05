@@ -1,0 +1,9 @@
+open3d.pipelines.registration.Feature
+-------------------------------------
+
+.. currentmodule:: open3d.pipelines.registration
+
+.. autoclass:: Feature
+    :members:
+    :undoc-members:
+    :inherited-members:

@@ -1,0 +1,9 @@
+open3d.pipelines.registration.PoseGraphEdgeVector
+-------------------------------------------------
+
+.. currentmodule:: open3d.pipelines.registration
+
+.. autoclass:: PoseGraphEdgeVector
+    :members:
+    :undoc-members:
+    :inherited-members:

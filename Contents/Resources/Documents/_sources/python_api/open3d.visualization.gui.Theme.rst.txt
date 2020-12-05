@@ -1,0 +1,9 @@
+open3d.visualization.gui.Theme
+------------------------------
+
+.. currentmodule:: open3d.visualization.gui
+
+.. autoclass:: Theme
+    :members:
+    :undoc-members:
+    :inherited-members:

@@ -1,0 +1,9 @@
+open3d.pipelines.registration.TransformationEstimationPointToPoint
+------------------------------------------------------------------
+
+.. currentmodule:: open3d.pipelines.registration
+
+.. autoclass:: TransformationEstimationPointToPoint
+    :members:
+    :undoc-members:
+    :inherited-members:

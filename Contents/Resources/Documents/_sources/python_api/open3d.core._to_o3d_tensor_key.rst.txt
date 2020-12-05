@@ -1,0 +1,6 @@
+open3d.core._to_o3d_tensor_key
+------------------------------
+
+.. currentmodule:: open3d.core
+
+.. autofunction:: _to_o3d_tensor_key

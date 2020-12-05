@@ -1,0 +1,9 @@
+open3d.utility.Vector4iVector
+-----------------------------
+
+.. currentmodule:: open3d.utility
+
+.. autoclass:: Vector4iVector
+    :members:
+    :undoc-members:
+    :inherited-members:

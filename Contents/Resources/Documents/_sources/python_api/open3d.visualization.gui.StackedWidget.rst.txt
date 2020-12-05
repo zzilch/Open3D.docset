@@ -1,0 +1,9 @@
+open3d.visualization.gui.StackedWidget
+--------------------------------------
+
+.. currentmodule:: open3d.visualization.gui
+
+.. autoclass:: StackedWidget
+    :members:
+    :undoc-members:
+    :inherited-members:

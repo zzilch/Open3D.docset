@@ -1,0 +1,9 @@
+open3d.pipelines.integration.TSDFVolumeColorType
+------------------------------------------------
+
+.. currentmodule:: open3d.pipelines.integration
+
+.. autoclass:: TSDFVolumeColorType
+    :members:
+    :undoc-members:
+    :inherited-members:

@@ -1,0 +1,6 @@
+open3d.core.pybind_svd
+----------------------
+
+.. currentmodule:: open3d.core
+
+.. autofunction:: pybind_svd
